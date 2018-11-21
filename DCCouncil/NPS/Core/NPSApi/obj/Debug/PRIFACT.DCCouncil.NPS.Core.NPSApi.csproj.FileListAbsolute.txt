@@ -9,3 +9,16 @@ J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSApi\bin\Debug\ClosedXML.pdb
 J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSApi\obj\Debug\PRIFACT.DCCouncil.NPS.Core.NPSApi.csprojResolveAssemblyReference.cache
 J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSApi\obj\Debug\PRIFACT.DCCouncil.NPS.Core.NPSApi.dll
 J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSApi\obj\Debug\PRIFACT.DCCouncil.NPS.Core.NPSApi.pdb
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\PRIFACT.DCCouncil.NPS.Core.NPSApi.dll
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\PRIFACT.DCCouncil.NPS.Core.NPSApi.pdb
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\PRIFACT.DCCouncil.NPS.Core.NPSCommon.dll
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\PRIFACT.PRIFACTBase.dll
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\ClosedXML.dll
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\DocumentFormat.OpenXml.dll
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\PRIFACT.PRIFACTBase.pdb
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\PRIFACT.DCCouncil.NPS.Core.NPSCommon.pdb
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\ClosedXML.pdb
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\bin\Debug\DocumentFormat.OpenXml.xml
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\obj\Debug\PRIFACT.DCCouncil.NPS.Core.NPSApi.csprojResolveAssemblyReference.cache
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\obj\Debug\PRIFACT.DCCouncil.NPS.Core.NPSApi.dll
+D:\Projects\GitRepos\NPS-DC-Council\DCCouncil\NPS\Core\NPSApi\obj\Debug\PRIFACT.DCCouncil.NPS.Core.NPSApi.pdb

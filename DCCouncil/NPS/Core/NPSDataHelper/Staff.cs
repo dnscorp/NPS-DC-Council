@@ -212,7 +212,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
 
         }
 
-        public static ResultInfo GetAllByOfficeId(long lOfficeId, bool blnOnlyStaffWithStaffLevelExpenditure, int? iPageSize, int? iPageNumber, StaffSortFields sortField, OrderByDirection orderByDirection)
+        public static ResultInfo GetAllByOfficeId(long lOfficeId, bool blnOnlyStaffWithStaffLevelExpenditure, int? iPageSize, int? iPageNumber, StaffSortFields sortField, OrderByDirection orderByDirection, int FiscalYear = 0, DateTime? AsOfDate = null)
         {
             return new SafeDBExecute<ResultInfo>(delegate(DBContext dbContext)
             {
@@ -239,6 +239,12 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
 
                 param = cmd.Parameters.Add("@SortDirection", SqlDbType.Int);
                 param.Value = BasicConverter.NullableIntToDbValue(Convert.ToInt32(orderByDirection));
+
+                param = cmd.Parameters.Add("@FiscalYear", SqlDbType.Int);
+                param.Value = BasicConverter.NullableIntToDbValue(Convert.ToInt32(FiscalYear));
+
+                param = cmd.Parameters.Add("@AsOfDate", SqlDbType.DateTime);
+                param.Value = BasicConverter.NullableDateToDbValue(AsOfDate);
 
                 List<IDataHelper> lstStaff = new List<IDataHelper>();
                 ResultInfo objResultInfo = new ResultInfo();

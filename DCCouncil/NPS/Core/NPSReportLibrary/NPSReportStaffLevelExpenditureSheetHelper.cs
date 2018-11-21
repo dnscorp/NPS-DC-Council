@@ -17,7 +17,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
             if (lstExpenditures != null && lstExpenditures.Count > 0)
             {
                 Dictionary<long, int> dicStaffIdColumnIndex = new Dictionary<long, int>();
-                List<IDataHelper> lstStaff = Staff.GetAllByOfficeId(objOffice.OfficeID, true, -1, null, NPSCommon.Enums.SortFields.StaffSortFields.FirstName, NPSCommon.Enums.OrderByDirection.Ascending).Items;
+                List<IDataHelper> lstStaff = Staff.GetAllByOfficeId(objOffice.OfficeID, true, -1, null, NPSCommon.Enums.SortFields.StaffSortFields.FirstName, NPSCommon.Enums.OrderByDirection.Ascending, objFiscalYear.Year, dtAsOfDate).Items;
                 //Row number hard coded here
                 int iRowNumber = 8;
                 int iColIndex = 0;
