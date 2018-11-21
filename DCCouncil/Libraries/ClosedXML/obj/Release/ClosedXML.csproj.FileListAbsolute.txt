@@ -1,0 +1,6 @@
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\bin\Release\ClosedXML.XML
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\bin\Release\ClosedXML.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\bin\Release\ClosedXML.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\obj\Release\ClosedXML.csprojResolveAssemblyReference.cache
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\obj\Release\ClosedXML.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\obj\Release\ClosedXML.pdb

@@ -1,0 +1,9 @@
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\PRIFACTBase\bin\Release\PRIFACT.PRIFACTBase.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\PRIFACTBase\bin\Release\PRIFACT.PRIFACTBase.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\PRIFACTBase\bin\Release\ClosedXML.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\PRIFACTBase\bin\Release\ClosedXML.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\PRIFACTBase\bin\Release\ClosedXML.xml
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\PRIFACTBase\obj\Release\PRIFACT.PRIFACTBase.csprojResolveAssemblyReference.cache
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\PRIFACTBase\obj\Release\PRIFACT.PRIFACTBase.csproj.ResolveComReference.cache
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\PRIFACTBase\obj\Release\PRIFACT.PRIFACTBase.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\PRIFACTBase\obj\Release\PRIFACT.PRIFACTBase.pdb

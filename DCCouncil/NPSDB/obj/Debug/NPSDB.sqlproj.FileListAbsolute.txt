@@ -1,0 +1,5 @@
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPSDB\bin\Debug\NPSDB.dacpac
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPSDB\obj\Debug\NPSDB.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPSDB\obj\Debug\NPSDB.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPSDB\bin\Debug\NPSDB.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPSDB\bin\Debug\NPSDB.pdb

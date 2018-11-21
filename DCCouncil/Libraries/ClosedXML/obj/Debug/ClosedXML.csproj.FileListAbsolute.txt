@@ -1,0 +1,4 @@
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\bin\Debug\ClosedXML.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\bin\Debug\ClosedXML.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\obj\Debug\ClosedXML.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\Libraries\ClosedXML\obj\Debug\ClosedXML.pdb

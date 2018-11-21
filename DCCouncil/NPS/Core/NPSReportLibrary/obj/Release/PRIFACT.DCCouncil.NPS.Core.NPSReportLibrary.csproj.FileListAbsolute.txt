@@ -1,0 +1,15 @@
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\ClosedXML.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\PRIFACT.DCCouncil.NPS.Core.NPSCommon.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\PRIFACT.PRIFACTBase.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\ClosedXML.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\ClosedXML.xml
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\PRIFACT.PRIFACTBase.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\PRIFACT.DCCouncil.NPS.Core.NPSCommon.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\bin\Release\PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\obj\Release\PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary.csprojResolveAssemblyReference.cache
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\obj\Release\PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary.csproj.ResolveComReference.cache
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\obj\Release\PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSReportLibrary\obj\Release\PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary.pdb

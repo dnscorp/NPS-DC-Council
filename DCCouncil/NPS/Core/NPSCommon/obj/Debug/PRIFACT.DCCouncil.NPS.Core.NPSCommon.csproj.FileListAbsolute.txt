@@ -1,0 +1,9 @@
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSCommon\bin\Debug\PRIFACT.DCCouncil.NPS.Core.NPSCommon.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSCommon\bin\Debug\PRIFACT.DCCouncil.NPS.Core.NPSCommon.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSCommon\bin\Debug\PRIFACT.PRIFACTBase.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSCommon\bin\Debug\ClosedXML.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSCommon\bin\Debug\PRIFACT.PRIFACTBase.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSCommon\bin\Debug\ClosedXML.pdb
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSCommon\obj\Debug\PRIFACT.DCCouncil.NPS.Core.NPSCommon.csprojResolveAssemblyReference.cache
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSCommon\obj\Debug\PRIFACT.DCCouncil.NPS.Core.NPSCommon.dll
+J:\Projects\TFS\DCCouncil NPS\DCCouncil\NPS\Core\NPSCommon\obj\Debug\PRIFACT.DCCouncil.NPS.Core.NPSCommon.pdb

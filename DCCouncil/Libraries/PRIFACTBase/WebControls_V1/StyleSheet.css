@@ -1,0 +1,161 @@
+﻿/* Styles for custom drop down */
+.Custom_DropDownOuterDiv
+{
+      margin:0px;
+      padding:0px;
+	  display:-moz-inline-stack;
+	  display:inline-block;
+	  border: 1px solid #CCCCCC; 
+	  background:#fff;
+}
+
+.Custom_CalendarOuterDiv
+{
+      margin:0px;
+      padding:0px;
+	  display:-moz-inline-stack;
+	  display:inline-block;
+
+}
+
+.Custom_DropDownPenultimateDiv
+{
+	  display:block;
+	  _display:inline-block;	  	 
+	  padding:3px 5px 3px 2px;
+	  border:none !important;
+}
+
+.Custom_DropDownPenultimateDiv input
+{
+	line-height:normal;
+
+}
+
+.Custom_DropDownImage
+{
+    cursor: pointer;
+	vertical-align:middle;
+}
+
+.Custom_SuggestionsOuterDiv
+{
+      border:1px solid #CCCCCC;
+      background-color:#FFFFFF;
+      left:0;
+}
+
+.Custom_SuggestionsOuterDiv span
+{
+	display:block;
+}
+/*End Styles for custom drop down */
+
+/*ACS Date Picker-Arun-Don't Change Anything after this line*//* the div that holds the date picker calendar */
+html body .cal-ctrl{ width:162px;line-height:normal; }
+.cal-ctrl a:hover{color:#333;}
+.cal-ctrl .cal-top-shadow{ overflow:hidden; height:6px; width:162px; background:transparent url(images/cal-top-shadow.gif) no-repeat 0 0;}
+.cal-ctrl .cal-content-border{ width:162px; background:transparent url(images/cal-content.gif) repeat-y 0 0;}
+.cal-ctrl .cal-bottom-shadow{ height:7px; width:162px; background:transparent url(images/cal-bottom-shadow.gif) no-repeat 0 0;}
+.cal-ctrl .cal-content{ background:#fff url(images/cal-gradient.gif) repeat-x 0 bottom; margin:0 2px 0 1px; }
+.cal-ctrl .cal-header{ text-align:center; font-size:12px; font-weight:bold; color:#999; height:20px;}
+.cal-ctrl .cal-header a{color:#666;}
+.cal-ctrl .cal-header a.prev
+{ float:left; height:21px; width:21px; background:transparent url(images/cal-prev.gif) no-repeat 0 0; overflow:hidden; /*text-indent:-99px;*/ margin:-3px 0 0 2px; text-decoration:none;}
+.cal-ctrl .cal-header a.next
+{ float:right; height:21px; width:21px; background:transparent url(images/cal-next.gif) no-repeat 0 0; overflow:hidden;  /*text-indent:-99px;*/margin:-3px 2px 0 0;text-decoration:none;}
+.cal-ctrl .cal-table
+{
+margin:3px 0  0 8px;
+width:150px;
+
+}
+/* day*/
+.cal-ctrl .cal-table .day a,.cal-ctrl .cal-table .day span{
+float:left;
+height:15px; width:15px; text-align:center !important;
+display:block;
+color:#444;
+text-decoration:none;
+margin-right:3px;
+padding:3px 3px 1px 0;
+font-size:11px;
+
+}
+body .cal-ctrl .cal-table .day a:hover{background:transparent url(images/cal-hover.gif) no-repeat right -17px;}
+.cal-ctrl .cal-table .day a.notthismonth{ color:#999;}
+.cal-ctrl .cal-table .day a.today{ background:transparent url(images/cal-hover.gif) no-repeat right 1px; text-align:center;}
+.cal-ctrl .cal-table .day a.disabled{ text-decoration:line-through;cursor:text;}
+.cal-ctrl .cal-table .day a.disabled-notthismonth{ color:#999;text-decoration:line-through;cursor:text;}
+.cal-ctrl .cal-table .day span{height:auto;}
+.cal-ctrl .cal-table .day .cal-week-head{height:18px;font-weight:bold;}
+/* day*/
+/* month*/
+.cal-ctrl .cal-table .month a
+{
+float:left;
+height:16px; width:45px; text-align:center;
+display:block;
+color:#444;
+margin:2px 0 10px 2px;
+padding-top:1px;
+font-size:11px;
+text-decoration:none;
+
+
+}
+body .cal-ctrl .cal-table .month a:hover
+{
+background:transparent url(images/cal-hover-big.gif) no-repeat 0 0;
+}
+ .cal-ctrl .cal-table .month a.thismonth
+{
+background:transparent url(images/cal-hover-big.gif) no-repeat 0 -20px;
+}
+
+/* month*/
+/* year*/
+.cal-ctrl .cal-table .year a
+{
+float:left;
+height:16px; width:45px; text-align:center;
+display:block;
+color:#444;
+margin:2px 0 10px 2px;
+padding-top:1px;
+text-decoration:none;
+font-size:11px;
+
+
+}
+body .cal-ctrl .cal-table .year a:hover
+{
+background:transparent url(images/cal-hover-big.gif) no-repeat 0 0;
+}
+ .cal-ctrl .cal-table .year a.thisyear
+{
+background:transparent url(images/cal-hover-big.gif) no-repeat 0 -20px;
+}
+
+/* year*/
+/**********************8********************/
+/**********************8********************/
+.clear-l{
+clear:left
+
+}
+.right
+{
+float:right;
+}
+.cal-ctrl .cal-footer
+{
+	padding:2px 2px 0 5px;
+	border-top:1px solid #ccc;
+}
+body .cal-ctrl .cal-footer a
+{
+	color:#444;
+	font-size:11px;
+}
+/*End Date*/

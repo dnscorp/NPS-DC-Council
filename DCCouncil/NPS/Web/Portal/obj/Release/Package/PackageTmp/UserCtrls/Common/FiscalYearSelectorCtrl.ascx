@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="FiscalYearSelectorCtrl.ascx.cs" Inherits="PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common.FiscalYearSelectorCtrl" %>
+Fiscal Year: <asp:DropDownList ID="ddlFiscalYears" runat="server" OnSelectedIndexChanged="ddlFiscalYears_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>

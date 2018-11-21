@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2853A363-064C-4113-A862-EE1B3B6A4F7C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary</RootNamespace>
+    <AssemblyName>PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdHocReportHelper.cs" />
+    <Compile Include="AdHocReportSummarySheetHelper.cs" />
+    <Compile Include="Helper\PurchaseOrderVendorHelper.cs" />
+    <Compile Include="IncludePOInAdHocReport.cs" />
+    <Compile Include="NPSReportHelper.cs" />
+    <Compile Include="NPSReportStaffLevelExpenditureSheetHelper.cs" />
+    <Compile Include="NPSReportSummarySheetHelper.cs" />
+    <Compile Include="NPSReportTransactionSheetHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CellFormatHelper.cs" />
+    <Compile Include="Utilities\CellFormatStyleIndex.cs" />
+    <Compile Include="Utilities\DateHelper.cs" />
+    <Compile Include="Utilities\MiscHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Libraries\ClosedXML\ClosedXML.csproj">
+      <Project>{bd5e6bfe-e837-4a35-bca9-39667d873a20}</Project>
+      <Name>ClosedXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\PRIFACTBase\PRIFACT.PRIFACTBase.csproj">
+      <Project>{974e634a-d1a6-4cad-a4ee-8d8668e03e86}</Project>
+      <Name>PRIFACT.PRIFACTBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NPSCommon\PRIFACT.DCCouncil.NPS.Core.NPSCommon.csproj">
+      <Project>{b435433e-1cff-489d-a22d-3ec54e6a7154}</Project>
+      <Name>PRIFACT.DCCouncil.NPS.Core.NPSCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NPSDataHelper\PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.csproj">
+      <Project>{7f9b7c9b-2150-492f-8e03-969325c7dbe7}</Project>
+      <Name>PRIFACT.DCCouncil.NPS.Core.NPSDataHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
