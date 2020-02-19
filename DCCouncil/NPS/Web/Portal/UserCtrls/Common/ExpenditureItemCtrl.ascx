@@ -3,6 +3,7 @@
     <asp:HiddenField ID="hfMode" runat="server" />
     <asp:HiddenField ID="hfExpenditureId" runat="server" />
     <asp:HiddenField ID="hfCategoryCode" runat="server" />
+    <asp:HiddenField ID="hfExpenditureSubCategoryCode" runat="server" />
     <asp:HiddenField ID="hfFiscalYearId" runat="server" />
     <asp:HiddenField ID="hfOfficeName" runat="server" />
 
@@ -144,6 +145,24 @@
                 <asp:TextBox TextMode="multiline" Rows="5"  ID="txtComments" runat="server"></asp:TextBox>
             </td>
             <td>&nbsp;
+            </td>
+        </tr>
+        <tr runat="server" id="trTrainingExpense">
+            <th>Training Related Expense
+            </th>
+            <td>
+                <asp:CheckBox ID="chkTrainingExpense" runat="server" />
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th><span class="required">*</span>Expenditure Sub-Category</th>
+            <td>
+                <asp:DropDownList ID="ddlExpenditureSubCategory" runat="server"></asp:DropDownList>
+            </td>
+            <td>
+                <asp:CustomValidator CssClass="error" ID="cvalExpenditureSubCategory" runat="server" Display="Dynamic" ValidationGroup="ValGroup1" OnServerValidate="cvalExpenditureSubCategory_ServerValidate"></asp:CustomValidator>
             </td>
         </tr>
         <tr>

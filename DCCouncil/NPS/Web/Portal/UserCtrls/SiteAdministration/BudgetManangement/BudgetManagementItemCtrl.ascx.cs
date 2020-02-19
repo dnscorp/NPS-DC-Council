@@ -80,6 +80,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
                 //txtAmount.Text = objBudget.Amount.ToString();
                 //chkIsDefault.Checked = objBudget.IsDefault;
                 hfFiscalYearId.Value = objBudget.FiscalYear.FiscalYearID.ToString();
+                chkTrainingExpense.Checked = objBudget.IsTrainingExpense;
                 if (objBudget.IsDefault)
                 {
                     litBudgetHeader.Text = "Update Default Budget";
@@ -203,7 +204,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
                 //{
                 //if (isDefaultCount < 1)
                 //{
-                Budget.Create(txtBudgetName.Text.Trim(), Convert.ToDouble(txtAmount.Text.Replace(",", "")), isDefaultCount < 1 ? true : false, Convert.ToInt64(hfFiscalYearId.Value), Convert.ToInt64(hfOfficeId.Value), false, false);
+                Budget.Create(txtBudgetName.Text.Trim(), Convert.ToDouble(txtAmount.Text.Replace(",", "")), isDefaultCount < 1 ? true : false, Convert.ToInt64(hfFiscalYearId.Value), Convert.ToInt64(hfOfficeId.Value), false, false,chkTrainingExpense.Checked);
                 UIHelper.SetSuccessMessage("Budget created successfully");
                 //}
                 //}
@@ -219,7 +220,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
                 FiscalYear objFiscalYear = FiscalYear.GetByFiscalYearID(Convert.ToInt64(hfFiscalYearId.Value));
                 Office objOffice = Office.GetByOfficeID(Convert.ToInt64(hfOfficeId.Value));
 
-                Budget.Create(txtBudgetName.Text.Trim(), Convert.ToDouble(txtAmount.Text.Replace(",", "")), false, Convert.ToInt64(hfFiscalYearId.Value), Convert.ToInt64(hfOfficeId.Value), false, false);
+                Budget.Create(txtBudgetName.Text.Trim(), Convert.ToDouble(txtAmount.Text.Replace(",", "")), false, Convert.ToInt64(hfFiscalYearId.Value), Convert.ToInt64(hfOfficeId.Value), false, false,chkTrainingExpense.Checked);
                 UIHelper.SetSuccessMessage("Reprogramming budget added  successfully");
 
             }
@@ -230,7 +231,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
                 Double DeductedAmount = Convert.ToDouble(txtAmount.Text.Replace(",", ""));
                 DeductedAmount = DeductedAmount * -1;
 
-                Budget.Create(txtBudgetName.Text.Trim(), DeductedAmount, false, Convert.ToInt64(hfFiscalYearId.Value), Convert.ToInt64(hfOfficeId.Value), false, true);
+                Budget.Create(txtBudgetName.Text.Trim(), DeductedAmount, false, Convert.ToInt64(hfFiscalYearId.Value), Convert.ToInt64(hfOfficeId.Value), false, true,chkTrainingExpense.Checked);
                 UIHelper.SetSuccessMessage("Reprogramming budget(Deduction) added successfully");
 
             }
@@ -245,6 +246,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
                 { dblAmount = dblAmount * -1; }
                 objBudget.Amount = dblAmount;
                 objBudget.FiscalYearID = Convert.ToInt64(hfFiscalYearId.Value);
+                objBudget.IsTrainingExpense = chkTrainingExpense.Checked;
                 objBudget.Update();
                 UIHelper.SetSuccessMessage("Budget updated successfully");
 
@@ -258,6 +260,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
                 objBudget.Name = txtBudgetName.Text.Trim();
                 objBudget.Amount = Convert.ToDouble(txtAmount.Text.Trim());
                 objBudget.FiscalYearID = Convert.ToInt64(hfFiscalYearId.Value);
+                objBudget.IsTrainingExpense = chkTrainingExpense.Checked;
                 objBudget.Update();
                 UIHelper.SetSuccessMessage("Budget updated successfully");
             }

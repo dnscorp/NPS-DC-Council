@@ -96,6 +96,14 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSCommon
 
             }
         }
+        public static string ExcelExpenditureSheetPrefix
+        {
+            get
+            {
+                return ConfigReader.GetValue("ExcelExpenditureSheetPrefix");
+
+            }
+        }
         public static string PasswordComplexityRegEx
         {
             get

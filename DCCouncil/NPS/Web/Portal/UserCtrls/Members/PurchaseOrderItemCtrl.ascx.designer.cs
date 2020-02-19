@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
-    
-    
-    public partial class PurchaseOrderItemCtrl {
-        
+namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
+{
+
+
+    public partial class PurchaseOrderItemCtrl
+    {
+
         /// <summary>
         /// divItemPopup control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divItemPopup;
-        
+
         /// <summary>
         /// hfMode control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfMode;
-        
+
         /// <summary>
         /// hfPurchaseOrderId control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfPurchaseOrderId;
-        
+
         /// <summary>
         /// hfFiscalYearId control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfFiscalYearId;
-        
+
         /// <summary>
         /// litHeading control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litHeading;
-        
+
         /// <summary>
         /// litOffice control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litOffice;
-        
+
         /// <summary>
         /// litDateOfTransaction control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litDateOfTransaction;
-        
+
         /// <summary>
         /// litVendorName control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litVendorName;
-        
+
         /// <summary>
         /// litOBJCode control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litOBJCode;
-        
+
         /// <summary>
         /// litPONumber control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litPONumber;
-        
+
         /// <summary>
         /// litPOAmountSum control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litPOAmountSum;
-        
+
         /// <summary>
         /// litPOAdjAmountSum control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litPOAdjAmountSum;
-        
+
         /// <summary>
         /// litVoucherAmountSum control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litVoucherAmountSum;
-        
+
         /// <summary>
         /// litPOBalSum control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litPOBalSum;
-        
+
         /// <summary>
         /// txtDescription control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
-        
+
         /// <summary>
         /// ddlAlternateOffice control.
         /// </summary>
@@ -155,7 +157,43 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlAlternateOffice;
-        
+
+        /// <summary>
+        /// ddlExpenditureSubCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlExpenditureSubCategory;
+
+        /// <summary>
+        /// cvalExpenditureSubCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvalExpenditureSubCategory;
+
+        /// <summary>
+        /// trTrainingExpense control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow trTrainingExpense;
+
+        /// <summary>
+        /// chkTrainingExpense control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkTrainingExpense;
+
         /// <summary>
         /// lnkSubmit control.
         /// </summary>
@@ -164,7 +202,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkSubmit;
-        
+
         /// <summary>
         /// lnkCancel control.
         /// </summary>

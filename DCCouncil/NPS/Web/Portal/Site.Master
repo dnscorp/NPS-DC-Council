@@ -13,6 +13,7 @@
     <asp:PlaceHolder ID="phTitle" runat="server">
         <title><%: Page.Title %> - DC Council NPS</title>
         <link rel="stylesheet" href="/Content/Site.css" />
+        <link rel="stylesheet" href="/Content/custom.css" />
     </asp:PlaceHolder>
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <%--<script src="/Scripts/Utility.js"></script>--%>

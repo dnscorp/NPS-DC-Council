@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetManangement {
-    
-    
-    public partial class BudgetManagementItemCtrl {
-        
+namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetManangement
+{
+
+
+    public partial class BudgetManagementItemCtrl
+    {
+
         /// <summary>
         /// divItemPopup control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divItemPopup;
-        
+
         /// <summary>
         /// hfMode control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfMode;
-        
+
         /// <summary>
         /// hfBudgetId control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfBudgetId;
-        
+
         /// <summary>
         /// hfOfficeId control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfOfficeId;
-        
+
         /// <summary>
         /// hfFiscalYearId control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfFiscalYearId;
-        
+
         /// <summary>
         /// litBudgetHeader control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litBudgetHeader;
-        
+
         /// <summary>
         /// txtBudgetName control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBudgetName;
-        
+
         /// <summary>
         /// cvalBudgetName control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvalBudgetName;
-        
+
         /// <summary>
         /// litBudgetAmount control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litBudgetAmount;
-        
+
         /// <summary>
         /// txtAmount control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAmount;
-        
+
         /// <summary>
         /// cvalAmount control.
         /// </summary>
@@ -110,7 +112,16 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvalAmount;
-        
+
+        /// <summary>
+        /// chkTrainingExpense control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkTrainingExpense;
+
         /// <summary>
         /// lnkSubmit control.
         /// </summary>
@@ -119,7 +130,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.BudgetMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkSubmit;
-        
+
         /// <summary>
         /// lnkCancel control.
         /// </summary>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.Interfaces;
+using PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.Helpers;
 using PRIFACT.PRIFACTBase.SQLHelpers;
 
 namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
@@ -24,12 +25,23 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             set;
         }
 
+        public long ExpenditureSubCategoryID
+        {
+            get;
+            set;
+        }
+
         public ExpenditureCategory ExpenditureCategory
         {
             get;
             set;
         }
 
+        public ExpenditureSubCategory ExpenditureSubCategory
+        {
+            get;
+            set;
+        }
         public string VendorName
         {
             get;
@@ -106,7 +118,13 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
         {
             get;
             set;
-        }        
+        }
+
+        public bool IsTrainingExpense
+        {
+            get;
+            set;
+        }
 
         public DateTime CreatedDate
         {
@@ -169,7 +187,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             ).DoExecute(GetDbConnectionString());
         }
 
-        public static ResultInfo GetAll(string strSearchText,string strOfficeIdsXml,long? fiscalYearId, string strExpenditureCategoryIdsXml, DateTime? asOfdate, int? iPageSize, int? iPageNumber, NPSCommon.Enums.SortFields.ExpenditureSortFields sortField, NPSCommon.Enums.OrderByDirection orderByDirection)
+        public static ResultInfo GetAll(string strSearchText,string strOfficeIdsXml,long? fiscalYearId, string strExpenditureCategoryIdsXml, DateTime? asOfdate, int? iPageSize, int? iPageNumber, NPSCommon.Enums.SortFields.ExpenditureSortFields sortField, NPSCommon.Enums.OrderByDirection orderByDirection,string npsReportFilters="0")
         {
             return new SafeDBExecute<ResultInfo>(delegate(DBContext dbContext)
             {
@@ -206,6 +224,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
                 param = cmd.Parameters.Add("@SortDirection", SqlDbType.Int);
                 param.Value = BasicConverter.NullableIntToDbValue(Convert.ToInt32(orderByDirection));
 
+                param = cmd.Parameters.Add("@ReportFilters", SqlDbType.VarChar);
+                param.Value = BasicConverter.StringToDbValue(npsReportFilters);
+
                 List<IDataHelper> lstExpenditures = new List<IDataHelper>();
                 ResultInfo objResultInfo = new ResultInfo();
                 try
@@ -237,6 +258,59 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             }).DoExecute(GetDbConnectionString());
         }
 
+        public static List<ExpenditureSubCategorySummaryHelper> GetAllExpenditureSubCategoryReport(string strOfficeIdsXml, long? fiscalYearId, string strExpenditureSubCategoryIdsXml, DateTime? asOfdate)
+        {
+            return new SafeDBExecute<List<ExpenditureSubCategorySummaryHelper>>(delegate (DBContext dbContext)
+            {
+                SqlDataReader reader = null;
+                SqlParameter param = null;
+                SqlCommand cmd = dbContext.ContextSqlCommand;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "Proc_EXPENDITURE_GetAllExpenditureSubCategoryReport";
+
+                param = cmd.Parameters.Add("@OfficeIds", SqlDbType.Xml);
+                param.Value = BasicConverter.StringToDbValue(strOfficeIdsXml);
+
+                param = cmd.Parameters.Add("@AsOfDate", SqlDbType.Date);
+                param.Value = BasicConverter.NullableDateToDbValue(asOfdate);
+
+                param = cmd.Parameters.Add("@FiscalYearId", SqlDbType.BigInt);
+                param.Value = BasicConverter.NullableLongToDbValue(fiscalYearId);
+
+                param = cmd.Parameters.Add("@ExpenditureSubCategoryIds", SqlDbType.Xml);
+                param.Value = BasicConverter.StringToDbValue(strExpenditureSubCategoryIdsXml);
+
+                List<ExpenditureSubCategorySummaryHelper> lstExpenditures = new List<ExpenditureSubCategorySummaryHelper>();
+                //ResultInfo objResultInfo = new ResultInfo();
+                try
+                {
+                    reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        ExpenditureSubCategorySummaryHelper objExpenditure = new ExpenditureSubCategorySummaryHelper();
+                        objExpenditure = _BindForReport(reader);
+                        lstExpenditures.Add(objExpenditure);
+                    }
+                    //objResultInfo.Items = lstExpenditures;
+                    reader.NextResult();
+                    //if (reader.Read())
+                    //{
+                    //    objResultInfo.RowCount = BasicConverter.DbToIntValue(reader["TotalRowCount"]);
+                    //}
+                }
+                finally
+                {
+                    if (reader != null)
+                    {
+                        DBContext.CloseReader(reader);
+                    }
+                }
+                //return objResultInfo;
+                return lstExpenditures;
+
+            }).DoExecute(GetDbConnectionString());
+        }
         public void Update(string strStaffLevelExpendituresXml)
         {
             new SafeDBExecute<bool>(delegate(DBContext dbContext)
@@ -251,6 +325,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
 
                 param = cmd.Parameters.Add("@ExpenditureCategoryId", SqlDbType.BigInt);
                 param.Value = BasicConverter.LongToDbValue(this.ExpenditureCategory.ExpenditureCategoryID);
+
+                param = cmd.Parameters.Add("@ExpenditureSubCategoryId", SqlDbType.BigInt);
+                param.Value = BasicConverter.LongToDbValue(this.ExpenditureSubCategoryID);
 
                 param = cmd.Parameters.Add("@VendorName", SqlDbType.NVarChar);
                 param.Value = BasicConverter.StringToDbValue(this.VendorName);
@@ -283,8 +360,11 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
                 param.Value = BasicConverter.BoolToDbValue(this.IsDeleted);
 
                 param = cmd.Parameters.Add("@StaffLevelExpenditures", SqlDbType.Xml);
-                param.Value = BasicConverter.StringToDbValue(strStaffLevelExpendituresXml);                
-                
+                param.Value = BasicConverter.StringToDbValue(strStaffLevelExpendituresXml);
+
+                param = cmd.Parameters.Add("@IsTrainingExpense", SqlDbType.Bit);
+                param.Value = BasicConverter.BoolToDbValue(this.IsTrainingExpense);
+
                 cmd.ExecuteNonQuery();
 
                 return true;
@@ -297,7 +377,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             return PRIFACT.DCCouncil.NPS.Core.NPSCommon.AppSettings.DbConnectionString;
         }
 
-        public static void Create(long expenditureCategoryId, string strVendorName, string strDescription, string strObjCode, DateTime dtDateOfTransaction, double dblAmount, long lOfficeId, string strComments, long lFiscalYearId, long lBudgetId, bool blnIsDeleted,string strStaffLevelExpenditureXml)
+        public static void Create(long expenditureCategoryId, string strVendorName, string strDescription, string strObjCode, DateTime dtDateOfTransaction, double dblAmount, long lOfficeId, string strComments, long lFiscalYearId, long lBudgetId, bool blnIsDeleted,bool IsTrainingExpense,long expenditureSubCategoryId, string strStaffLevelExpenditureXml)
         {
             new SafeDBExecute<bool>(delegate(DBContext dbContext)
             {
@@ -308,6 +388,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
 
                 param = cmd.Parameters.Add("@ExpenditureCategoryId", SqlDbType.BigInt);
                 param.Value = BasicConverter.LongToDbValue(expenditureCategoryId);
+
+                param = cmd.Parameters.Add("@ExpenditureSubCategoryId", SqlDbType.BigInt);
+                param.Value = BasicConverter.LongToDbValue(expenditureSubCategoryId);
 
                 param = cmd.Parameters.Add("@VendorName", SqlDbType.NVarChar);
                 param.Value = BasicConverter.StringToDbValue(strVendorName);
@@ -339,6 +422,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
                 param = cmd.Parameters.Add("@IsDeleted", SqlDbType.Bit);
                 param.Value = BasicConverter.BoolToDbValue(blnIsDeleted);
 
+                param = cmd.Parameters.Add("@IsTrainingExpense", SqlDbType.Bit);
+                param.Value = BasicConverter.BoolToDbValue(IsTrainingExpense);
+
                 param = cmd.Parameters.Add("@StaffLevelExpenditures", SqlDbType.Xml);
                 param.Value = BasicConverter.StringToDbValue(strStaffLevelExpenditureXml);                
 
@@ -349,6 +435,16 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
                 return true;
             }
                ).DoExecute(GetDbConnectionString());
+        }
+
+        private static ExpenditureSubCategorySummaryHelper _BindForReport(SqlDataReader reader)
+        {
+            ExpenditureSubCategorySummaryHelper objExpenditure = new ExpenditureSubCategorySummaryHelper();
+            objExpenditure.Amount = BasicConverter.DbToDoubleValue(reader["Amount"]);
+            objExpenditure.DateOfTransaction = BasicConverter.DbToDateValue(reader["DateOfTransaction"]);
+            objExpenditure.OfficeID = BasicConverter.DbToLongValue(reader["OfficeID"]);
+            objExpenditure.ExpenditureSubCategoryID = BasicConverter.DbToLongValue(reader["ExpenditureSubCategoryId"]);
+            return objExpenditure;
         }
         private static Expenditure _Bind(SqlDataReader reader)
         {
@@ -362,10 +458,13 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objExpenditure.Description = BasicConverter.DbToStringValue(reader["Description"]);
             objExpenditure.ExpenditureCategoryID = BasicConverter.DbToLongValue(reader["ExpenditureCategoryID"]);
             objExpenditure.ExpenditureCategory = ExpenditureCategory.Bind(reader);
+            objExpenditure.ExpenditureSubCategoryID = BasicConverter.DbToLongValue(reader["ExpenditureSubCategoryId"]);
+            objExpenditure.ExpenditureSubCategory = ExpenditureSubCategory.Bind(reader);
             objExpenditure.ExpenditureID = BasicConverter.DbToLongValue(reader["ExpenditureID"]);
             objExpenditure.FiscalYearID = BasicConverter.DbToLongValue(reader["FiscalYearID"]);
             objExpenditure.FiscalYear = FiscalYear.Bind(reader);
             objExpenditure.IsDeleted = BasicConverter.DbToBoolValue(reader["IsDeleted"]);
+            objExpenditure.IsTrainingExpense = BasicConverter.DbToBoolValue(reader["IsTrainingExpense"]);
             objExpenditure.OBJCode = BasicConverter.DbToStringValue(reader["OBJCode"]);
             objExpenditure.OfficeID = BasicConverter.DbToLongValue(reader["OfficeID"]);
             objExpenditure.Office = Office.Bind(reader);
@@ -386,10 +485,13 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objExpenditure.Description = BasicConverter.DbToStringValue(reader["ExpenditureDescription"]);
             objExpenditure.ExpenditureCategoryID = BasicConverter.DbToLongValue(reader["ExpenditureCategoryID"]);
             objExpenditure.ExpenditureCategory = ExpenditureCategory.Bind(reader);
+            objExpenditure.ExpenditureSubCategoryID = BasicConverter.DbToLongValue(reader["ExpenditureSubCategoryId"]);
+            objExpenditure.ExpenditureSubCategory = ExpenditureSubCategory.Bind(reader);
             objExpenditure.ExpenditureID = BasicConverter.DbToLongValue(reader["ExpenditureID"]);
             objExpenditure.FiscalYearID = BasicConverter.DbToLongValue(reader["FiscalYearID"]);
             objExpenditure.FiscalYear = FiscalYear.Bind(reader);
             objExpenditure.IsDeleted = BasicConverter.DbToBoolValue(reader["ExpenditureIsDeleted"]);
+            objExpenditure.IsTrainingExpense = BasicConverter.DbToBoolValue(reader["IsTrainingExpense"]);
             objExpenditure.OBJCode = BasicConverter.DbToStringValue(reader["ExpenditureOBJCode"]);
             objExpenditure.OfficeID = BasicConverter.DbToLongValue(reader["OfficeID"]);
             objExpenditure.Office = Office.Bind(reader);

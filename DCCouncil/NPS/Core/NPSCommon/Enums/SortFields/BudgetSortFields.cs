@@ -13,6 +13,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSCommon.Enums.SortFields
         Amount = 2,
         FiscalYear = 3,
         CreatedDate = 4,
-        UpdatedDate = 5
+        UpdatedDate = 5,
+        IsTrainingExpense =6
     }
 }

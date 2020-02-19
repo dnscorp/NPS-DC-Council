@@ -26,6 +26,14 @@
                 <asp:CustomValidator CssClass="error" ID="cvalAmount" runat="server" OnServerValidate="cvalAmount_ServerValidate" Display="Dynamic" ValidationGroup="ValGroup1"></asp:CustomValidator>
             </td>
         </tr>
+        <tr>
+            <th>Training Related</th>
+            <td>
+                <asp:CheckBox ID="chkTrainingExpense" runat="server" />
+            </td>
+            <td>
+            </td>
+        </tr>
         <%--<tr>
             <th>Is Default Budget:</th>
             <td>

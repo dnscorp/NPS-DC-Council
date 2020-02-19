@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="AdHocReportHelper.cs" />
     <Compile Include="AdHocReportSummarySheetHelper.cs" />
+    <Compile Include="ExpenditureSubCategoryReportHelper.cs" />
+    <Compile Include="ExpenditureSubCategoryReportSummarySheetHelper.cs" />
     <Compile Include="Helper\PurchaseOrderVendorHelper.cs" />
     <Compile Include="IncludePOInAdHocReport.cs" />
     <Compile Include="NPSReportHelper.cs" />

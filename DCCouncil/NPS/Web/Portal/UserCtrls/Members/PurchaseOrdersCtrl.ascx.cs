@@ -156,6 +156,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
                 Literal litPOBalSum = e.Item.FindControl("litPOBalSum") as Literal;
                 Literal litName = e.Item.FindControl("litName") as Literal;
                 Literal litYear = e.Item.FindControl("litYear") as Literal;
+                Literal litExpSubCategory = e.Item.FindControl("litExpSubCategory") as Literal;
                 Literal litDescription = e.Item.FindControl("litDescription") as Literal;
 
                 PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.PurchaseOrder objPurchaseOrder = e.Item.DataItem as PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.PurchaseOrder;
@@ -169,6 +170,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
                 litPOBalSum.Text = UIHelper.GetAmountInDefaultFormat(objPurchaseOrder.POBalSum);
                 litName.Text = objPurchaseOrder.Office.Name;
                 litYear.Text = objPurchaseOrder.FiscalYear.Year.ToString();
+                litExpSubCategory.Text = objPurchaseOrder.ExpenditureSubCategory.Name;
                 litDescription.Text = objPurchaseOrder.PurchaseOrderDescription.DescriptionText;
                               
                 HtmlAnchor lnkEdit = e.Item.FindControl("lnkEdit") as HtmlAnchor;

@@ -59,6 +59,9 @@
                                     <asp:LinkButton ID="lBtnBudgetType" runat="server" CommandName="BudgetType" Text="BudgetType"></asp:LinkButton>
                                 </th>
                                 <th>
+                                    <asp:LinkButton ID="lBtnTrainingExpense" runat="server" CommandName="IsTrainingExpense" Text="Is Training Expense"></asp:LinkButton>
+                                </th>
+                                <th>
                                     <asp:LinkButton ID="lBtnCreatedDate" runat="server" CommandName="CreatedDate" Text="Created Date"></asp:LinkButton>
                                 </th>
                                 <th>
@@ -78,6 +81,9 @@
                             </td>
                             <td>
                                 <asp:Literal ID="litBudgetType" runat="server"></asp:Literal>
+                            </td>
+                            <td>
+                                <asp:Literal ID="litTrainingExpense" runat="server"></asp:Literal>
                             </td>
                             <td>
                                 <asp:Literal ID="litCreatedDate" runat="server"></asp:Literal></td>

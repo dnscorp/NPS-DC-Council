@@ -71,8 +71,15 @@
         </ul>
     </div>
 
-    
-    <h1 class="page-header">Non-Personal Spending</h1>
+    <div style="padding:20px 10px;margin-top:20px;border-top:1px solid #ccc;">
+    <div class="dns-radio-buttons-wrapper" style="margin-bottom:20px;">
+        <asp:RadioButtonList ID="rdoOptions" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow" AutoPostBack="true" OnSelectedIndexChanged="rdoOptions_SelectedIndexChanged">
+            <asp:ListItem Selected="True" Value="0">Non-Personal Spending</asp:ListItem>
+            <asp:ListItem Value="1">Training Expense</asp:ListItem>
+            <asp:ListItem Value="2">Non-Personal & Training Spending</asp:ListItem>
+        </asp:RadioButtonList>
+    </div>
+    <%--<h1 class="page-header"><asp:Literal ID="ltlSearchHeader" runat="server"></asp:Literal></h1>--%>
     <div class="popup-parent">
         <div class="popup-trigger">
             <div class="search-query">
@@ -150,6 +157,82 @@
             </asp:UpdatePanel>
         </div>
     </div>
+    </div>
+
+    <%--<h1 class="page-header">Travel Expense Spending</h1>
+    <div class="popup-parent">
+        <div class="popup-trigger">
+            <div class="search-query">
+                <div class="search-text-loading">
+                    <asp:TextBox ID="txtTravelSearch" autocomplete="off" runat="server"></asp:TextBox><div class="ajax-loader"></div>
+                </div>
+                <a href="javascript:;" class="btn" id="lnkTravelReset" runat="server">Reset</a>
+            </div>
+            <asp:UpdatePanel ID="upTravelSearchResults" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <div id="spanTravelInfo" runat="server">
+                    </div>
+                    <asp:Button ID="btnTravel" Style="display: none" Text="Submit" OnClick="txtTravelSearch_TextChanged" runat="server" />
+                    <asp:HiddenField ID="hfTravelSortField" runat="server" Value="OfficeName" />
+                    <asp:HiddenField ID="hfTravelOrderByDirection" runat="server" Value="Ascending" />
+                    <asp:Repeater ID="rptrTravelResult" runat="server" OnItemDataBound="rptrTravelResult_ItemDataBound" OnItemCommand="rptrTravelResult_ItemCommand">
+                        <HeaderTemplate>
+                            <table cellspacing="0" cellpadding="0" class="grid">
+                                <tr>
+                                    <th>
+                                        <asp:LinkButton ID="lBtnTravelOfficeName" runat="server" CommandName="OfficeName" Text="Office"></asp:LinkButton>
+                                    </th>
+                                    <th>
+                                        <asp:LinkButton ID="lBtnTravelBudget" runat="server" CommandName="TotalBudgetAmount" Text="Budget"></asp:LinkButton>
+                                    </th>
+                                    <th>
+                                        <asp:LinkButton ID="lBtnTravelExpenditure" runat="server" CommandName="TotalExpenditureAmount" Text="Spent"></asp:LinkButton>
+                                    </th>
+                                    <th>
+                                        <asp:LinkButton ID="lBtnTravelBurnRate" runat="server" CommandName="BurnRate" Text="Burn Rate"></asp:LinkButton>
+                                    </th>
+                                </tr>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <asp:Literal ID="litTravelOfficeName" runat="server"></asp:Literal>
+                                </td>
+                                <td>
+                                    <asp:Literal ID="litTravelBudgetAmount" runat="server"></asp:Literal>
+                                </td>
+                                <td>
+                                    <asp:Literal ID="litTravelExpenditureAmount" runat="server"></asp:Literal>
+                                </td>
+                                <td style="width: 160px;">
+                                    <div class="perc-bar-conatiner">
+                                        <div class="perc-label">
+                                            <asp:Literal ID="litTravelBurnRate1" runat="server"></asp:Literal>
+                                        </div>
+                                        <div class="perc-bar" runat="server" id="divPercBar">
+                                            <div class="perc-label perc-label2">
+                                                <asp:Literal ID="litTravelBurnRate2" runat="server"></asp:Literal>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </table>
+                        </FooterTemplate>
+                    </asp:Repeater>
+                    <div class="no-record">
+                        <asp:Literal ID="litTravelNoResults" runat="server"></asp:Literal>
+                    </div>
+                    <uc2:PagerCtrl ID="PagerCtrl2" runat="server" PageSize="25" OnBindMainRepeater="PagerCtrl2_BindMainRepeater" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+    </div>--%>
 </div>
 <script>
     $("#<%=txtSearch.ClientID%>").keyup(function (event) {
@@ -160,4 +243,14 @@
         $("#<%=txtSearch.ClientID%>").val("");
         $("#<%=txtSearch.ClientID%>").trigger('change');
     });
+
+    <%--//for travel expense
+    $("#<%=txtTravelSearch.ClientID%>").keyup(function (event) {
+        this.onchange();
+    });
+
+    $("#<%=lnkTravelReset.ClientID%>").click(function (event) {
+        $("#<%=txtTravelSearch.ClientID%>").val("");
+        $("#<%=txtTravelSearch.ClientID%>").trigger('change');
+    });--%>
 </script>

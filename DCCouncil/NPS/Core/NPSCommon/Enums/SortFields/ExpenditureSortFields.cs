@@ -15,7 +15,8 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSCommon.Enums.SortFields
         IndexCode = 4,
         PCA = 5,
         Amount = 6,        
-        Comments = 8
+        Comments = 8,
+        ExpSubCategory=9
     }
 
     public enum RecurringSortFields

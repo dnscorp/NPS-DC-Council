@@ -52,7 +52,11 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
             get;
             set;
         }
-
+        public ExpenditureSubCategory ExpenditureSubCategory
+        {
+            get;
+            set;
+        }
 
 
         #endregion
@@ -72,10 +76,36 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
         {
             //_LoadBudgets(null, null);
             _LoadOffices();
+            _LoadExpenditureSubCategory();
             base.OnInit(e);
         }
 
         #endregion
+
+        private void _LoadExpenditureSubCategory()
+        {
+            ddlExpenditureSubCategory.Items.Clear();
+            List<ExpenditureSubCategory> lstExpenditureSubCategories = ExpenditureSubCategory.GetAllExpenditureSubCategories().Items.ConvertAll(q => (ExpenditureSubCategory)q);
+
+            foreach (ExpenditureSubCategory expenditureSubCategory in lstExpenditureSubCategories)
+            {
+                ListItem lstItem = new ListItem(expenditureSubCategory.Name, expenditureSubCategory.ExpenditureSubCategoryID.ToString());
+                ddlExpenditureSubCategory.Items.Add(lstItem);
+            }
+            ListItem lstItemAll = new ListItem("--Select--", "0");
+            ddlExpenditureSubCategory.Items.Insert(0, lstItemAll);
+        }
+
+        protected void cvalExpenditureSubCategory_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            CustomValidator cv = (CustomValidator)source;
+            if (ddlExpenditureSubCategory.SelectedValue == "0")
+            {
+                cv.ErrorMessage = "Expenditure sub-category should not be empty";
+                args.IsValid = false;
+                return;
+            }
+        }
 
         #region Public Setter and Getter Methods
         public void InitializeFields(PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.PurchaseOrder objPurchaseOrder)
@@ -102,7 +132,8 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
                 _LoadOffices_EditPO();
                 ddlAlternateOffice.SelectedValue = objPurchaseOrder.AlternateOfficeID.ToString();
                 //ddlAlternateOffice.SelectedValue = "47";
-
+                ddlExpenditureSubCategory.SelectedValue = objPurchaseOrder.ExpenditureSubCategoryId.ToString();
+                chkTrainingExpense.Checked = objPurchaseOrder.IsTrainingExpense;
             }
             else
             {
@@ -245,7 +276,9 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
                 long lPurchaseOrderId = Convert.ToInt64(hfPurchaseOrderId.Value);
                 PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.PurchaseOrder objPurchaseOrder = PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.PurchaseOrder.GetByPurchaseID(lPurchaseOrderId);              
                 objPurchaseOrder.PurchaseOrderDescription.DescriptionText = txtDescription.Text.Trim();
+                objPurchaseOrder.ExpenditureSubCategoryId = long.Parse(ddlExpenditureSubCategory.SelectedValue);
                 objPurchaseOrder.AlternateOfficeID =  Convert.ToInt64(ddlAlternateOffice.Text);
+                objPurchaseOrder.IsTrainingExpense = chkTrainingExpense.Checked;
                 objPurchaseOrder.Update();
                 UIHelper.SetSuccessMessage("Expenditure updated successfully");
             }

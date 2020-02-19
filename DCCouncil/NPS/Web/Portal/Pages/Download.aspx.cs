@@ -105,12 +105,19 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.Pages
                 byte[] buffer;
                 buffer = _GetFileBuffer(newStrSaveFilePath);
               
-
                 DateTime dtAsOfDate = Convert.ToDateTime(AsOfDate);
                 string strFileName = AppSettings.ExcelAdhocSheetPrefix + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Day.ToString() + "_" + DateTime.Now.Year.ToString() + "_" + DateTime.Now.ToString("HH") +DateTime.Now.ToString("mm")+ ".xlsx";
                 _DownloadFile(buffer, strFileName);
-            
-            
+            }
+            if (Type.Equals("ExpenditureSubCategoryReport"))
+            {
+                string newStrSaveFilePath = AppSettings.ExcelTempLocationPath + Id + ".xlsx";
+                byte[] buffer;
+                buffer = _GetFileBuffer(newStrSaveFilePath);
+
+                DateTime dtAsOfDate = Convert.ToDateTime(AsOfDate);
+                string strFileName = AppSettings.ExcelExpenditureSheetPrefix + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Day.ToString() + "_" + DateTime.Now.Year.ToString() + "_" + DateTime.Now.ToString("HH") + DateTime.Now.ToString("mm") + ".xlsx";
+                _DownloadFile(buffer, strFileName);
             }
         }
 

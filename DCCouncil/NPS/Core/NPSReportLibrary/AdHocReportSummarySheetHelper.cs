@@ -135,6 +135,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
 
         }
 
+        
         private static void _SetOfficeCode(ExcelGenerator objExcelGenerator, Office objOffice, int iRowNumber)
         {
             {

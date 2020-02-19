@@ -25,6 +25,8 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -80,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\custom.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -144,6 +147,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="Default.aspx" />
+    <Content Include="DLLs\AjaxControlToolkit.dll" />
+    <Content Include="DLLs\AjaxMin.dll" />
+    <Content Include="DLLs\DocumentFormat.OpenXml.dll" />
+    <Content Include="DLLs\Elmah.dll" />
+    <Content Include="DLLs\HtmlAgilityPack.dll" />
+    <Content Include="DLLs\Microsoft.AspNet.FriendlyUrls.dll" />
     <Content Include="Images\cell.jpg" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\header_bg.png" />
@@ -169,6 +178,7 @@
     <Content Include="Pages\Members\TelephoneTransactions\Import.aspx" />
     <Content Include="Pages\Members\testForm.aspx" />
     <Content Include="Pages\Reports\AdhocReports.aspx" />
+    <Content Include="Pages\Reports\ExpenditureSubCategoryReport.aspx" />
     <Content Include="Pages\Reports\NPSReports.aspx" />
     <Content Include="Pages\SiteAdministration\BudgetManagement.aspx" />
     <Content Include="Pages\SiteAdministration\ExpenditureCategoryManagement.aspx" />
@@ -217,6 +227,7 @@
     <Content Include="UserCtrls\Members\TelephoneTransaction\ImportCtrl.ascx" />
     <Content Include="UserCtrls\Common\RecurringCtrl.ascx" />
     <Content Include="UserCtrls\Reports\AdhocReportsCtrl.ascx" />
+    <Content Include="UserCtrls\Reports\ExpenditureSubCategoryReportCtrl.ascx" />
     <Content Include="UserCtrls\Reports\NPSReportsCtrl.ascx" />
     <Content Include="UserCtrls\SiteAdministration\BudgetManagementCtrl.ascx" />
     <Content Include="UserCtrls\SiteAdministration\BudgetManangement\BudgetManagementItemCtrl.ascx" />
@@ -337,6 +348,13 @@
     </Compile>
     <Compile Include="Pages\Reports\AdhocReports.aspx.designer.cs">
       <DependentUpon>AdhocReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Reports\ExpenditureSubCategoryReport.aspx.cs">
+      <DependentUpon>ExpenditureSubCategoryReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Reports\ExpenditureSubCategoryReport.aspx.designer.cs">
+      <DependentUpon>ExpenditureSubCategoryReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Reports\NPSReports.aspx.cs">
       <DependentUpon>NPSReports.aspx</DependentUpon>
@@ -548,6 +566,13 @@
     </Compile>
     <Compile Include="UserCtrls\Reports\AdhocReportsCtrl.ascx.designer.cs">
       <DependentUpon>AdhocReportsCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\Reports\ExpenditureSubCategoryReportCtrl.ascx.cs">
+      <DependentUpon>ExpenditureSubCategoryReportCtrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCtrls\Reports\ExpenditureSubCategoryReportCtrl.ascx.designer.cs">
+      <DependentUpon>ExpenditureSubCategoryReportCtrl.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserCtrls\Reports\NPSReportsCtrl.ascx.cs">
       <DependentUpon>NPSReportsCtrl.ascx</DependentUpon>

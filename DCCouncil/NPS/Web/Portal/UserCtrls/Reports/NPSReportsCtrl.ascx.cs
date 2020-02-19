@@ -89,7 +89,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports
             if (lstBudgets != null && lstBudgets.Count > 0)
             {
                 litReportStatus.Visible = false;
-                Guid downloadGuid = ReportHelper.GenerateNPSReport(objOffice, objFiscalYear, Convert.ToDateTime(txtAsOfDate.Text.Trim()));                
+                Guid downloadGuid = ReportHelper.GenerateNPSReport(objOffice, objFiscalYear, Convert.ToDateTime(txtAsOfDate.Text.Trim()),rdoFilters.SelectedValue);                
                 Response.Redirect("~/Pages/Download.aspx?Type=NPSReport&Id=" + downloadGuid.ToString() + "&FY=" + NPSRequestContext.GetContext().FiscalYearSelected.Year.ToString() + "&OfficeId=" + lOfficeId.ToString() + "&AsOfDate=" + txtAsOfDate.Text.Trim());
             }
             else

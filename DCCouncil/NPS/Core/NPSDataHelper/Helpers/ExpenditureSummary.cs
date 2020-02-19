@@ -112,7 +112,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.Helpers
             }).DoExecute(GetDbConnectionString());
         }
 
-        public static ResultInfo SearchByFiscalYearId(string strSearchText,long lFiscalYearId, int? iPageSize, int? iPageNumber, ExpenditureSummarySortField sortField, OrderByDirection orderByDirection)
+        public static ResultInfo SearchByFiscalYearId(string strSearchText,long lFiscalYearId, int? iPageSize, int? iPageNumber, ExpenditureSummarySortField sortField, OrderByDirection orderByDirection,string ReportFilters="0")
         {
             return new SafeDBExecute<ResultInfo>(delegate(DBContext dbContext)
             {
@@ -139,6 +139,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.Helpers
 
                 param = cmd.Parameters.Add("@SortDirection", SqlDbType.Int);
                 param.Value = BasicConverter.NullableIntToDbValue(Convert.ToInt32(orderByDirection));
+
+                param = cmd.Parameters.Add("@ReportFilters", SqlDbType.VarChar);
+                param.Value = BasicConverter.StringToDbValue(ReportFilters);
 
                 List<IDataHelper> lstExpenditureSummary = new List<IDataHelper>();
                 ResultInfo objResultInfo = new ResultInfo();

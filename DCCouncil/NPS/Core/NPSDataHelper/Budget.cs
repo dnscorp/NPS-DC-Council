@@ -86,6 +86,12 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             set;
         }
 
+        public bool IsTrainingExpense
+        {
+            get;
+            set;
+        }
+
         public static Budget Bind(System.Data.SqlClient.SqlDataReader reader)
         {
             Budget objBudget = new Budget();
@@ -99,6 +105,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objBudget.Name = BasicConverter.DbToStringValue(reader["BudgetName"]);
             objBudget.OfficeID = BasicConverter.DbToLongValue(reader["OfficeID"]);
             objBudget.IsDeduct = BasicConverter.DbToBoolValue(reader["BudgetIsDeduct"]);
+            objBudget.IsTrainingExpense = BasicConverter.DbToBoolValue(reader["IsTrainingExpense"]);
             objBudget.Office = Office.Bind(reader);
             objBudget.UpdatedDate = BasicConverter.DbToNullableDateValue(reader["BudgetUpdatedDate"]);
             return objBudget;
@@ -220,13 +227,14 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objBudget.Name = BasicConverter.DbToStringValue(reader["Name"]);
             objBudget.OfficeID = BasicConverter.DbToLongValue(reader["OfficeID"]);
             objBudget.IsDeduct = BasicConverter.DbToBoolValue(reader["IsDeduct"]);
+            objBudget.IsTrainingExpense = BasicConverter.DbToBoolValue(reader["IsTrainingExpense"]);
             objBudget.Office = Office.Bind(reader);
             objBudget.UpdatedDate = BasicConverter.DbToNullableDateValue(reader["UpdatedDate"]);
             return objBudget;
         }
 
 
-        public static void Create(string strBudgetName, double dblAmount, bool blnIsDefault, long lFiscalYearId, long lOfficeId, bool blnIsDeleted, bool blnIsDeduct)
+        public static void Create(string strBudgetName, double dblAmount, bool blnIsDefault, long lFiscalYearId, long lOfficeId, bool blnIsDeleted, bool blnIsDeduct, bool IsTrainingExpense)
         {
             new SafeDBExecute<bool>(delegate(DBContext dbContext)
             {
@@ -256,6 +264,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
 
                 param = cmd.Parameters.Add("@IsDeduct", SqlDbType.Bit);
                 param.Value = BasicConverter.BoolToDbValue(blnIsDeduct);
+
+                param = cmd.Parameters.Add("@IsTrainingExpense", SqlDbType.Bit);
+                param.Value = BasicConverter.BoolToDbValue(IsTrainingExpense);
 
                 cmd.ExecuteNonQuery();
 
@@ -289,6 +300,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
                 
                 param = cmd.Parameters.Add("@IsDeleted", SqlDbType.Bit);
                 param.Value = BasicConverter.BoolToDbValue(this.IsDeleted);
+
+                param = cmd.Parameters.Add("@IsTrainingExpense", SqlDbType.Bit);
+                param.Value = BasicConverter.BoolToDbValue(this.IsTrainingExpense);
 
                 cmd.ExecuteNonQuery();
 

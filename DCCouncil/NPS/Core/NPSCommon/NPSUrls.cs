@@ -20,6 +20,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSCommon
         //Reports
         public const string AdhocReports = "/Pages/Reports/AdhocReports";
         public const string NPSReports = "/Pages/Reports/NPSReports";
+        public const string ExpenditureCategoryReports = "/Pages/Reports/ExpenditureSubCategoryReport";
 
         //SiteAdministration
         public const string SiteSettings = "/Pages/SiteAdministration/SiteSettings";

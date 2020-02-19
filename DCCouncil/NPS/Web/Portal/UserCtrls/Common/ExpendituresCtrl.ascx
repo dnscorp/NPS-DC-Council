@@ -79,6 +79,9 @@
                                     <asp:LinkButton ID="lBtnDateOfTransaction2" runat="server" CommandName="DateOfTransaction"></asp:LinkButton>
                                 </th>
                                 <th>
+                                    <asp:LinkButton ID="lBtnExpSubCategory" runat="server" CommandName="ExpSubCategory" Text="Exp. Sub-Category"></asp:LinkButton>
+                                </th>
+                                <th>
                                     <asp:LinkButton ID="lBtnComments" runat="server" CommandName="Comments" Text="Comments"></asp:LinkButton>
                                 </th>
                                 <th>&nbsp;</th>
@@ -113,6 +116,9 @@
                             </td>
                             <td>
                                 <asp:Literal ID="litDateOfTransaction2" runat="server"></asp:Literal>
+                            </td>
+                            <td>
+                                <asp:Literal ID="litExpSubCategory" runat="server"></asp:Literal>
                             </td>
                             <td>
                                 <asp:Literal ID="litComments" runat="server"></asp:Literal>

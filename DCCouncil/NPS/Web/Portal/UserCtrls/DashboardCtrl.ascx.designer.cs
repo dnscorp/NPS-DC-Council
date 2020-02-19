@@ -7,11 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
-    
-    
-    public partial class DashboardCtrl {
-        
+namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls
+{
+
+
+    public partial class DashboardCtrl
+    {
+
+        /// <summary>
+        /// rdoOptions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdoOptions;
+
         /// <summary>
         /// txtSearch control.
         /// </summary>
@@ -20,7 +31,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
-        
+
         /// <summary>
         /// lnkReset control.
         /// </summary>
@@ -29,7 +40,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkReset;
-        
+
         /// <summary>
         /// upSearchResults control.
         /// </summary>
@@ -38,7 +49,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel upSearchResults;
-        
+
         /// <summary>
         /// spanInfo control.
         /// </summary>
@@ -47,7 +58,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanInfo;
-        
+
         /// <summary>
         /// bttn control.
         /// </summary>
@@ -56,7 +67,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bttn;
-        
+
         /// <summary>
         /// hfSortField control.
         /// </summary>
@@ -65,7 +76,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfSortField;
-        
+
         /// <summary>
         /// hfOrderByDirection control.
         /// </summary>
@@ -74,7 +85,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfOrderByDirection;
-        
+
         /// <summary>
         /// rptrResult control.
         /// </summary>
@@ -83,7 +94,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptrResult;
-        
+
         /// <summary>
         /// litNoResults control.
         /// </summary>
@@ -92,7 +103,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litNoResults;
-        
+
         /// <summary>
         /// PagerCtrl1 control.
         /// </summary>

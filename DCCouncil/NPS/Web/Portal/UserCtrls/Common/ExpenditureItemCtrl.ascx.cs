@@ -56,6 +56,12 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
             set;
         }
 
+        public ExpenditureSubCategory ExpenditureSubCategory
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Page Events
@@ -74,6 +80,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
         {
             //_LoadBudgets(null, null);
             _LoadOffices();
+            _LoadExpenditureSubCategory();
             base.OnInit(e);
         }
 
@@ -90,6 +97,22 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 litFiscalYearSelected.Text = objExpenditure.FiscalYear.Name;
                 litDateOfTransactionFieldText.Text = objExpenditure.ExpenditureCategory.GetAttribute("DateOfTransactionFieldText");
                 hfCategoryCode.Value = ExpenditureCategory.Code;
+
+                if (ExpenditureCategory.Code == "PC" || ExpenditureCategory.Code == "TC")
+                {
+                    ddlExpenditureSubCategory.ClearSelection();
+                    ddlExpenditureSubCategory.Items.FindByText(ExpenditureCategory.Name).Selected = true;
+                    ddlExpenditureSubCategory.Enabled = false;
+
+                    trTrainingExpense.Visible = false;
+                }
+                else
+                {
+                    ddlExpenditureSubCategory.SelectedValue = objExpenditure.ExpenditureSubCategoryID.ToString();
+                    trTrainingExpense.Visible = true;
+                    chkTrainingExpense.Checked = objExpenditure.IsTrainingExpense;
+                }
+
                 if (ExpenditureCategory.IsVendorStaff)
                 {
                     txtVendorName.Visible = false;
@@ -159,7 +182,17 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 litFiscalYearSelected.Text = NPSRequestContext.GetContext().FiscalYearSelected.Name;
                 litDateOfTransactionFieldText.Text = ExpenditureCategory.GetAttribute("DateOfTransactionFieldText");
                 hfCategoryCode.Value = ExpenditureCategory.Code;
-                if (ExpenditureCategory.IsVendorStaff)
+
+                if (ExpenditureCategory.Code == "PC" || ExpenditureCategory.Code == "TC")
+                {
+                    trTrainingExpense.Visible = false;
+                }
+                else
+                {
+                    trTrainingExpense.Visible = true;
+                }
+
+                    if (ExpenditureCategory.IsVendorStaff)
                 {
                     txtVendorName.Visible = false;
                     ddlStaffs.Visible = true;                    
@@ -326,7 +359,19 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
         #endregion
 
         #region Private Methods
+        private void _LoadExpenditureSubCategory()
+        {
+            ddlExpenditureSubCategory.Items.Clear();
+            List<ExpenditureSubCategory> lstExpenditureSubCategories = ExpenditureSubCategory.GetAllExpenditureSubCategories().Items.ConvertAll(q => (ExpenditureSubCategory)q);
 
+            foreach (ExpenditureSubCategory expenditureSubCategory in lstExpenditureSubCategories)
+            {
+                ListItem lstItem = new ListItem(expenditureSubCategory.Name, expenditureSubCategory.ExpenditureSubCategoryID.ToString());
+                ddlExpenditureSubCategory.Items.Add(lstItem);
+            }
+            ListItem lstItemAll = new ListItem("--Select--", "0");
+            ddlExpenditureSubCategory.Items.Insert(0, lstItemAll);
+        }
         private void _LoadOffices()
         {
             long lFiscalYearId = NPSRequestContext.GetContext().FiscalYearSelected.FiscalYearID;
@@ -353,6 +398,12 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 litOffice.Visible = false;
                 ddlOffices.Visible = true;
                 litHeading.Text = "Create";
+                if (ExpenditureCategory.Code == "PC" || ExpenditureCategory.Code == "TC")
+                {
+                    ddlExpenditureSubCategory.ClearSelection();
+                    ddlExpenditureSubCategory.Items.FindByText(ExpenditureCategory.Name).Selected = true;
+                    ddlExpenditureSubCategory.Enabled = false;
+                }
             }
             if (Mode == ExpenditureItemCtrlMode.Edit)
             {
@@ -434,6 +485,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 return;
             }
 
+            bool blnTrainingExpense = false;
             if (Mode == ExpenditureItemCtrlMode.Create)
             {
                 //TODO Change to date from control
@@ -442,6 +494,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 string strDescription = string.Empty;
                 string strOBJCode = string.Empty;
                 string strVendorName = string.Empty;
+                
                 string strStaffLevelExpenditureXml = string.Empty;
                 if (ExpenditureCategory.IsFixed)
                 {
@@ -494,12 +547,18 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 {
                     dateOfTransaction = Convert.ToDateTime(txtDateOfTransaction.Text);
                 }
+
+                if(trTrainingExpense!=null)
+                {
+                    if (chkTrainingExpense.Checked) blnTrainingExpense = true;
+                }
+
                 List<IDataHelper> lstBudgets = objOffice.Budgets(NPSRequestContext.GetContext().FiscalYearSelected.FiscalYearID);
                 if (lstBudgets != null && lstBudgets.Count > 0)
                 {
                     List<Budget> lstBudgetsConverted = lstBudgets.ConvertAll(q => (Budget)q);
                     Budget objBudget = lstBudgetsConverted.Single(q => q.IsDefault);
-                    Expenditure.Create(ExpenditureCategory.ExpenditureCategoryID, strVendorName, strDescription, strOBJCode, dateOfTransaction, Convert.ToDouble(txtAmount.Text.Trim().Replace(",", "")), Convert.ToInt64(ddlOffices.SelectedValue), txtComments.Text.Trim(), Convert.ToInt64(hfFiscalYearId.Value), objBudget.BudgetID, false, strStaffLevelExpenditureXml);
+                    Expenditure.Create(ExpenditureCategory.ExpenditureCategoryID, strVendorName, strDescription, strOBJCode, dateOfTransaction, Convert.ToDouble(txtAmount.Text.Trim().Replace(",", "")), Convert.ToInt64(ddlOffices.SelectedValue), txtComments.Text.Trim(), Convert.ToInt64(hfFiscalYearId.Value), objBudget.BudgetID, false, blnTrainingExpense, long.Parse(ddlExpenditureSubCategory.SelectedValue), strStaffLevelExpenditureXml);
                     UIHelper.SetSuccessMessage("Expenditure created successfully");
                 }
                 else
@@ -516,6 +575,14 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 objExpenditure.Amount = Convert.ToDouble(txtAmount.Text.Trim());
                 //objExpenditure.Budget = Budget.GetByBudgetId(Convert.ToInt64(ddlBudgets.SelectedValue));
                 objExpenditure.Comments = txtComments.Text.Trim();
+
+                if (trTrainingExpense != null)
+                {
+                    if (chkTrainingExpense.Checked) blnTrainingExpense = true;
+                }
+
+                objExpenditure.IsTrainingExpense = blnTrainingExpense;// chkTrainingExpense.Checked;
+                objExpenditure.ExpenditureSubCategoryID = long.Parse(ddlExpenditureSubCategory.SelectedValue);
                 if (ExpenditureCategory.IsMonthly)
                 {
                     objExpenditure.DateOfTransaction = Convert.ToDateTime(ddlMonths.SelectedValue);
@@ -667,6 +734,17 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                         return;
                     }
                 }
+            }
+        }
+
+        protected void cvalExpenditureSubCategory_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            CustomValidator cv = (CustomValidator)source;
+            if (ddlExpenditureSubCategory.SelectedValue == "0")
+            {
+                cv.ErrorMessage = "Expenditure sub-category should not be empty";
+                args.IsValid = false;
+                return;
             }
         }
 

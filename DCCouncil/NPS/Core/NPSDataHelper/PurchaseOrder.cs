@@ -108,6 +108,22 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             set;
         }
 
+        public long ExpenditureSubCategoryId
+        {
+            get;
+            set;
+        }
+        public ExpenditureSubCategory ExpenditureSubCategory
+        {
+            get;
+            set;
+        }
+
+        public bool IsTrainingExpense
+        {
+            get;
+            set;
+        }
         public bool IsDeleted
         {
             get;
@@ -152,7 +168,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             return Vendor.GetByNameAndOffice(this.VendorName,this.OfficeID);
         }
 
-        public static void Create(string strVendorName, string strOBJCode, DateTime dtDateOfTransaction, string strPONumber, float flPOAmtSum, float flPOAdjAmtSum, float flVoucherAmtSum, float flPOBalSum, double dblOfficeID, double dblBudgetID, double? dblImportID, double dblFiscalYearId, bool blnIsDeleted)
+        public static void Create(string strVendorName, string strOBJCode, DateTime dtDateOfTransaction, string strPONumber, float flPOAmtSum, float flPOAdjAmtSum, float flVoucherAmtSum, float flPOBalSum, double dblOfficeID, double dblBudgetID,double dblExpenditureSubCategoryId, double? dblImportID, double dblFiscalYearId, bool blnIsDeleted,bool IsTrainingExpense)
         {
             new SafeDBExecute<bool>(delegate(DBContext dbContext)
             {
@@ -192,7 +208,11 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
                 param = cmd.Parameters.Add("@BudgetID", SqlDbType.BigInt);
                 param.Value = BasicConverter.DoubleToDbValue(dblBudgetID);
 
+                param = cmd.Parameters.Add("@ExpenditureSubCategoryId", SqlDbType.BigInt);
+                param.Value = BasicConverter.DoubleToDbValue(dblExpenditureSubCategoryId);
 
+                param = cmd.Parameters.Add("@IsTrainingExpense", SqlDbType.Bit);
+                param.Value = BasicConverter.BoolToDbValue(IsTrainingExpense);
 
                 param = cmd.Parameters.Add("@ImportID", SqlDbType.BigInt);
                 param.Value = BasicConverter.NullableDoubleToDbValue(dblImportID);
@@ -251,6 +271,12 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
                 param = cmd.Parameters.Add("@BudgetID", SqlDbType.BigInt);
                 param.Value = BasicConverter.DoubleToDbValue(this.BudgetID);
 
+                param = cmd.Parameters.Add("@ExpenditureSubCategoryId", SqlDbType.BigInt);
+                param.Value = BasicConverter.DoubleToDbValue(this.ExpenditureSubCategoryId);
+
+                param = cmd.Parameters.Add("@IsTrainingExpense", SqlDbType.Bit);
+                param.Value = BasicConverter.BoolToDbValue(this.IsTrainingExpense);
+
                 param = cmd.Parameters.Add("@ImportID", SqlDbType.BigInt);
                 param.Value = BasicConverter.DoubleToDbValue(this.ImportID);
 
@@ -274,7 +300,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
 
 
         }
-        public static ResultInfo GetAll(string strSearchText, long? officeId, long? fiscalYearId, DateTime? asOfdate, int? iPageSize, int? iPageNumber, NPSCommon.Enums.SortFields.PurchaseOrderSortField sortField, NPSCommon.Enums.OrderByDirection orderByDirection)
+        public static ResultInfo GetAll(string strSearchText, long? officeId, long? fiscalYearId, DateTime? asOfdate, int? iPageSize, int? iPageNumber, NPSCommon.Enums.SortFields.PurchaseOrderSortField sortField, NPSCommon.Enums.OrderByDirection orderByDirection, string npsReportFilters = "0")
         {
             return new SafeDBExecute<ResultInfo>(delegate(DBContext dbContext)
             {
@@ -308,6 +334,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
                 param = cmd.Parameters.Add("@SortDirection", SqlDbType.Int);
                 param.Value = BasicConverter.NullableIntToDbValue(Convert.ToInt32(orderByDirection));
 
+                param = cmd.Parameters.Add("@ReportFilters", SqlDbType.VarChar);
+                param.Value = BasicConverter.StringToDbValue(npsReportFilters);
+
                 List<IDataHelper> lstPurchaseOrders = new List<IDataHelper>();
                 ResultInfo objResultInfo = new ResultInfo();
                 try
@@ -340,7 +369,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
         }
 
 
-        public static ResultInfo GetAll_with_alternateOffices(string strSearchText, long? officeId, long? fiscalYearId, DateTime? asOfdate, int? iPageSize, int? iPageNumber, NPSCommon.Enums.SortFields.PurchaseOrderSortField sortField, NPSCommon.Enums.OrderByDirection orderByDirection)
+        public static ResultInfo GetAll_with_alternateOffices(string strSearchText, long? officeId, long? fiscalYearId, DateTime? asOfdate, int? iPageSize, int? iPageNumber, NPSCommon.Enums.SortFields.PurchaseOrderSortField sortField, NPSCommon.Enums.OrderByDirection orderByDirection, string npsReportFilters = "0")
         {
             return new SafeDBExecute<ResultInfo>(delegate(DBContext dbContext)
             {
@@ -373,6 +402,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
 
                 param = cmd.Parameters.Add("@SortDirection", SqlDbType.Int);
                 param.Value = BasicConverter.NullableIntToDbValue(Convert.ToInt32(orderByDirection));
+
+                param = cmd.Parameters.Add("@ReportFilters", SqlDbType.VarChar);
+                param.Value = BasicConverter.StringToDbValue(npsReportFilters);
 
                 List<IDataHelper> lstPurchaseOrders = new List<IDataHelper>();
                 ResultInfo objResultInfo = new ResultInfo();
@@ -652,7 +684,10 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objPurchaseOrder.UpdatedDate = BasicConverter.DbToNullableDateValue(reader["UpdatedDate"]);
             objPurchaseOrder.VendorName = BasicConverter.DbToStringValue(reader["VendorName"]);
             objPurchaseOrder.VoucherAmtSum = BasicConverter.DbToDoubleValue(reader["VoucherAmtSum"]);
-            objPurchaseOrder.AlternateOfficeID = BasicConverter.DbToLongValue(reader["AlternateOfficeID"]); 
+            objPurchaseOrder.AlternateOfficeID = BasicConverter.DbToLongValue(reader["AlternateOfficeID"]);
+            objPurchaseOrder.ExpenditureSubCategoryId = BasicConverter.DbToLongValue(reader["ExpenditureSubCategoryId"]);
+            objPurchaseOrder.IsTrainingExpense = BasicConverter.DbToBoolValue(reader["IsTrainingExpense"]);
+            objPurchaseOrder.ExpenditureSubCategory = ExpenditureSubCategory.Bind(reader);
             return objPurchaseOrder;
         }
 

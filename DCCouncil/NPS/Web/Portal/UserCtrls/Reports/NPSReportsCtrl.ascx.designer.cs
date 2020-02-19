@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports {
-    
-    
-    public partial class NPSReportsCtrl {
-        
+namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports
+{
+
+
+    public partial class NPSReportsCtrl
+    {
+
         /// <summary>
         /// litSelectedFiscalYear control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litSelectedFiscalYear;
-        
+
         /// <summary>
         /// txtAsOfDate control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAsOfDate;
-        
+
         /// <summary>
         /// CalendarExtender1 control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
-        
+
         /// <summary>
         /// cvalAsOfDate control.
         /// </summary>
@@ -47,7 +49,16 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvalAsOfDate;
-        
+
+        /// <summary>
+        /// rdoFilters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdoFilters;
+
         /// <summary>
         /// litReportStatus control.
         /// </summary>
@@ -56,7 +67,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litReportStatus;
-        
+
         /// <summary>
         /// hfSortField control.
         /// </summary>
@@ -65,7 +76,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfSortField;
-        
+
         /// <summary>
         /// hfOrderByDirection control.
         /// </summary>
@@ -74,7 +85,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfOrderByDirection;
-        
+
         /// <summary>
         /// rptrResult control.
         /// </summary>
@@ -83,7 +94,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptrResult;
-        
+
         /// <summary>
         /// litNoResults control.
         /// </summary>

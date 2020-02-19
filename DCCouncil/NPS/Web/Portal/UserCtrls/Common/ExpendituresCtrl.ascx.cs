@@ -156,12 +156,16 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 LinkButton lBtnDescription = e.Item.FindControl("lBtnDescription") as LinkButton;     
                 LinkButton lBtnOfficeName = e.Item.FindControl("lBtnOfficeName") as LinkButton;
                 LinkButton lBtnDateOfTransaction2 = e.Item.FindControl("lBtnDateOfTransaction2") as LinkButton;
+                LinkButton lBtnExpSubCategory = e.Item.FindControl("lBtnExpSubCategory") as LinkButton;
                 lBtnDateOfTransaction.Text = ExpenditureCategory.GetAttribute("DateOfTransactionHeader");
                 lBtnDateOfTransaction2.Text = ExpenditureCategory.GetAttribute("DateOfTransactionHeader");
                 lBtnVendorName.Text = ExpenditureCategory.GetAttribute("VendorNameHeader");
 
-                //If the Expense is to be entered on a monthly basis, show the DateOfTransaction as the 6th Column and show the Office name as well
-                if (ExpenditureCategory.IsMonthly)
+                if (ExpenditureCategory.Code == "PC" || ExpenditureCategory.Code == "TC")
+                    lBtnExpSubCategory.Visible = false;
+
+                    //If the Expense is to be entered on a monthly basis, show the DateOfTransaction as the 6th Column and show the Office name as well
+                    if (ExpenditureCategory.IsMonthly)
                 {
                     lBtnOfficeName.Visible = true;
                     lBtnDateOfTransaction2.Visible = true;
@@ -187,6 +191,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 Literal litIndex = e.Item.FindControl("litIndex") as Literal;
                 Literal litPCA = e.Item.FindControl("litPCA") as Literal;
                 Literal litAmount = e.Item.FindControl("litAmount") as Literal;
+                Literal litExpSubCategory = e.Item.FindControl("litExpSubCategory") as Literal;
                 Literal litComments = e.Item.FindControl("litComments") as Literal;
                 Literal litDateOfTransaction2 = e.Item.FindControl("litDateOfTransaction2") as Literal;
                 Literal litOfficeName = e.Item.FindControl("litOfficeName") as Literal;
@@ -199,11 +204,16 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 litIndex.Text = objExpenditure.Office.IndexCode;
                 litPCA.Text = objExpenditure.Office.PCA;
                 litAmount.Text = UIHelper.GetAmountInDefaultFormat(objExpenditure.Amount);
-                litComments.Text = objExpenditure.Comments;                
+                //litExpSubCategory.Text = objExpenditure.ExpenditureSubCategoryID==0?string.Empty:ExpenditureSubCategory.GetByID(objExpenditure.ExpenditureSubCategoryID).Name;
+                litExpSubCategory.Text = objExpenditure.ExpenditureSubCategory.Name;
+                litComments.Text = objExpenditure.Comments;
                 HtmlAnchor lnkEdit = e.Item.FindControl("lnkEdit") as HtmlAnchor;
                 HtmlAnchor lnkDelete = e.Item.FindControl("lnkDelete") as HtmlAnchor;
                 lnkEdit.Attributes.Add("ExpenditureId", objExpenditure.ExpenditureID.ToString());
                 lnkDelete.Attributes.Add("ExpenditureId", objExpenditure.ExpenditureID.ToString());
+
+                if (objExpenditure.ExpenditureSubCategory.Code == "PC" || objExpenditure.ExpenditureSubCategory.Code == "TC")
+                    litExpSubCategory.Visible = false;
 
                 //If the Expense is to be entered on a monthly basis, show the DateOfTransaction as the 6th Column and show the Office name as well
                 if (ExpenditureCategory.IsMonthly)

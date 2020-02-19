@@ -1,0 +1,80 @@
+﻿/*Radio button list Styles */
+.dns-radio-buttons-wrapper {
+    clear: both;
+    display: inline-block;
+}
+
+.dns-radio-button {
+    position: absolute;
+    left: -9999em;
+    top: -9999em;
+}
+
+    .dns-radio-button + label {
+        float: left;
+        /*padding: 0.5em 1em;*/
+        cursor: pointer;
+        border: 1px solid #2e6da4;
+        margin-right: -1px;
+        color: #fff;
+        background-color: #337ab7;
+        padding: .375rem .75rem;
+        line-height: 1.5;
+    }
+
+        .dns-radio-button + label:first-of-type {
+            border-radius: 0.25em 0 0 0.25em;
+        }
+
+        .dns-radio-button + label:last-of-type {
+            border-radius: 0 0.25em 0.25em 0;
+        }
+
+    .dns-radio-button:checked + label {
+        background-color: #ccc; /*#135084;*/
+    }
+
+    .dns-radio-button + label:hover {
+        background-color: #286090;
+        border-color: #204d74;
+    }
+
+.dns-radio-buttons-wrapper input[type=radio] {
+    position: absolute;
+    left: -9999em;
+    top: -9999em;
+}
+
+    .dns-radio-buttons-wrapper input[type=radio] + label {
+        float: left;
+        /*padding: 0.5em 1em;*/
+        cursor: pointer;
+        border: 1px solid #999898; /*1px solid #2e6da4;*/
+        margin-right: -1px;
+        color: #000;
+        background-color: #fff; /*#337ab7;*/
+        padding: .375rem .75rem;
+        line-height: 1.5;
+        font-weight: normal;
+    }
+
+        .dns-radio-buttons-wrapper input[type=radio] + label:first-of-type {
+            border-radius: 0.25em 0 0 0.25em;
+        }
+
+        .dns-radio-buttons-wrapper input[type=radio] + label:last-of-type {
+            border-radius: 0 0.25em 0.25em 0;
+        }
+
+    .dns-radio-buttons-wrapper input[type=radio]:checked + label, .dns-radio-buttons-wrapper input[type=radio]:checked + label:hover {
+        background-color: #1e58bb; /*#135084;*/
+        font-weight: 700;
+        color: #fff !important;
+    }
+
+    .dns-radio-buttons-wrapper input[type=radio] + label:hover {
+        background-color: #f7f8f8; /*#286090;*/
+        border-color: #999898; /*#204d74;*/
+    }
+
+/*Radio button list end*/

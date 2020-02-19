@@ -96,8 +96,20 @@
                 <asp:DropDownList ID="ddlAlternateOffice" runat="server"></asp:DropDownList>
             </td>
         </tr>
-
-
+        <tr>
+            <th><span class="required">*</span>Expenditure Sub-Category</th>
+            <td>
+                <asp:DropDownList ID="ddlExpenditureSubCategory" runat="server"></asp:DropDownList><br />
+                <asp:CustomValidator CssClass="error" ID="cvalExpenditureSubCategory" runat="server" Display="Dynamic" ValidationGroup="ValGroup1" OnServerValidate="cvalExpenditureSubCategory_ServerValidate"></asp:CustomValidator>
+            </td>
+        </tr>
+        <tr runat="server" id="trTrainingExpense">
+            <th>Training Related Expense
+            </th>
+            <td>
+                <asp:CheckBox ID="chkTrainingExpense" runat="server" />
+            </td>
+        </tr>
         <tr class="form-button">
             <th></th>
             <td >

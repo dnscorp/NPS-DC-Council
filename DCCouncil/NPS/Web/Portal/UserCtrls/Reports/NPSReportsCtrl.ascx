@@ -31,7 +31,19 @@
                         <asp:CustomValidator CssClass="error" ID="cvalAsOfDate" runat="server" OnServerValidate="cvalAsOfDate_ServerValidate" Display="Dynamic" ValidationGroup="ValGroup1"></asp:CustomValidator>
                     </td>
                 </tr>
-
+                <tr>
+                    <th>Filters
+                    </th>
+                    <td>
+                        <div class="dns-radio-buttons-wrapper">
+                            <asp:RadioButtonList ID="rdoFilters" RepeatDirection="Horizontal" RepeatLayout="Flow" runat="server">
+                                <asp:ListItem Selected="True" Value="0">Include Training</asp:ListItem>
+                                <asp:ListItem Value="1">Exclude Training</asp:ListItem>
+                                <asp:ListItem Value="2">Training Only</asp:ListItem>
+                            </asp:RadioButtonList>
+                        </div>
+                    </td>
+                </tr>
 
             </table>
         </div>

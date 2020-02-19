@@ -18,6 +18,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSCommon.Enums.SortFields
         POBalSum = 7,
         OfficeName = 8,
         FiscalYear = 9,
-        Description = 10
+        Description = 10,
+        ExpSubCategory=11
     }
 }

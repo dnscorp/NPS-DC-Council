@@ -21,6 +21,7 @@
                  
                     <li><a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.NPSReports%>">NPS Reports</a></li>
                    <li><a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.AdhocReports%>">AdHoc Reports</a></li>
+                    <li><a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.ExpenditureCategoryReports%>">Expenditure Category Reports</a></li>
                 </ul>
             </li>
             <li>

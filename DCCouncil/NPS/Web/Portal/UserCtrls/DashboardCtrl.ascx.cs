@@ -55,7 +55,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls
         {
             //The data needs to be binded here since the viewstate is disabled and we need the posted values to determine the data to be fetched.
             _SetUI();
-            _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, PagerCtrl1.CurrentPage, SortField, OrderByDirection);
+            _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, PagerCtrl1.CurrentPage, SortField, OrderByDirection, rdoOptions.SelectedValue);
             txtSearch.Attributes.Add("onchange", string.Format("javascript:doButtonClick('{0}');", bttn.ClientID));
         }
 
@@ -98,7 +98,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls
         //Binding the data based on page number
         protected void PagerCtrl1_BindMainRepeater(object sender, EventArgs e)
         {
-            _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, PagerCtrl1.CurrentPage, SortField, OrderByDirection);
+            _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, PagerCtrl1.CurrentPage, SortField, OrderByDirection, rdoOptions.SelectedValue);
         }
 
         //Sorting done here
@@ -108,13 +108,13 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls
             if (selectedSortField == SortField)
             {
                 _SwitchOrderByDirection();
-                _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, PagerCtrl1.CurrentPage, SortField, OrderByDirection);
+                _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, PagerCtrl1.CurrentPage, SortField, OrderByDirection, rdoOptions.SelectedValue);
             }
             else
             {
                 SortField = selectedSortField;
                 OrderByDirection = Core.NPSCommon.Enums.OrderByDirection.Ascending;
-                _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, PagerCtrl1.CurrentPage, SortField, OrderByDirection);
+                _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, PagerCtrl1.CurrentPage, SortField, OrderByDirection, rdoOptions.SelectedValue);
             }
         }
         #endregion
@@ -125,14 +125,21 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls
         private void _InitializeRepeater()
         {
             PagerCtrl1.CurrentPageIndex = 0;
-            _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, 1, SortField, OrderByDirection);
+            //if (rdoOptions.SelectedValue == "0")
+            //    ltlSearchHeader.Text = "Non-Personal Spending";
+            //else if (rdoOptions.SelectedValue == "1")
+            //    ltlSearchHeader.Text = "Training Expense";
+            //else if (rdoOptions.SelectedValue == "2")
+            //    ltlSearchHeader.Text = "Non-Personal & Training Spending";
+
+            _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, 1, SortField, OrderByDirection,rdoOptions.SelectedValue);
         }
 
         //Bind the data to the repeater based on the page selected and sort order
-        private void _BindData(string strSearchText, int? iPageSize, int? iPageNumber, ExpenditureSummarySortField sortField, OrderByDirection orderByDirection)
+        private void _BindData(string strSearchText, int? iPageSize, int? iPageNumber, ExpenditureSummarySortField sortField, OrderByDirection orderByDirection,string filter)
         {
             ResultInfo objResultInfo = null;
-            objResultInfo = ExpenditureSummary.SearchByFiscalYearId(strSearchText, FiscalYearSelected.FiscalYearID, iPageSize, iPageNumber, sortField, orderByDirection);
+            objResultInfo = ExpenditureSummary.SearchByFiscalYearId(strSearchText, FiscalYearSelected.FiscalYearID, iPageSize, iPageNumber, sortField, orderByDirection,filter);
 
             if (objResultInfo != null)
             {
@@ -180,5 +187,10 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls
             }
         }
         #endregion
+
+        protected void rdoOptions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _InitializeRepeater();
+        }
     }
 }

@@ -123,6 +123,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration
                 Literal litName = e.Item.FindControl("litName") as Literal;
                 Literal litAmount = e.Item.FindControl("litAmount") as Literal;
                 Literal litBudgetType = e.Item.FindControl("litBudgetType") as Literal;
+                Literal litTrainingExpense = e.Item.FindControl("litTrainingExpense") as Literal;
                 Literal litCreatedDate = e.Item.FindControl("litCreatedDate") as Literal;
                 Literal litUpdatedDate = e.Item.FindControl("litUpdatedDate") as Literal;
 
@@ -131,6 +132,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration
                 litName.Text = objBudget.Name;
                 litAmount.Text = UIHelper.GetAmountInDefaultFormat(objBudget.Amount);
                 litBudgetType.Text = objBudget.IsDefault ? "Default" : "Reprogramming";
+                litTrainingExpense.Text = objBudget.IsTrainingExpense ? "Yes" : "No";
                 litCreatedDate.Text = UIHelper.GetDateTimeInDefaultFormat(objBudget.CreatedDate);
                 litUpdatedDate.Text = UIHelper.GetDateTimeInDefaultFormat(objBudget.UpdatedDate);
 

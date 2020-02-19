@@ -48,7 +48,9 @@
     <Compile Include="ExpenditureCategory.cs" />
     <Compile Include="ExpenditureCategoryAttribute.cs" />
     <Compile Include="ExpenditureCategoryAttributeLookup.cs" />
+    <Compile Include="ExpenditureSubCategory.cs" />
     <Compile Include="FiscalYear.cs" />
+    <Compile Include="Helpers\ExpenditureSubCategorySummaryHelper.cs" />
     <Compile Include="Helpers\ExpenditureSummary.cs" />
     <Compile Include="Interfaces\IDataHelper.cs" />
     <Compile Include="Office.cs" />

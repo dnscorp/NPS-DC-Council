@@ -45,16 +45,16 @@
                                     <div class="create-new-button"></div>
                                 </th>--%>
                                 <th>
-                                    <asp:LinkButton ID="lBtnDateOfTransaction" runat="server" CommandName="DateOfTransaction" Text="DateOfTransaction"></asp:LinkButton>
+                                    <asp:LinkButton ID="lBtnDateOfTransaction" runat="server" CommandName="DateOfTransaction" Text="Date Of Transaction"></asp:LinkButton>
                                 </th>
                                 <th>
-                                    <asp:LinkButton ID="lBtnVendorName" runat="server" CommandName="VendorName" Text="VendorName"></asp:LinkButton>
+                                    <asp:LinkButton ID="lBtnVendorName" runat="server" CommandName="VendorName" Text="Vendor Name"></asp:LinkButton>
                                 </th>
                                 <th>
                                     <asp:LinkButton ID="lBtnObjCode" runat="server" CommandName="OBJCode" Text="OBJ"></asp:LinkButton>
                                 </th>
                                 <th>
-                                    <asp:LinkButton ID="lBtnPONumber" runat="server" CommandName="PONumber" Text="PONumber"></asp:LinkButton>
+                                    <asp:LinkButton ID="lBtnPONumber" runat="server" CommandName="PONumber" Text="PO Number"></asp:LinkButton>
                                 </th>
                                 <th>
                                     <asp:LinkButton ID="lBtnDescription" runat="server" CommandName="Description" Text="Description"></asp:LinkButton>
@@ -76,6 +76,9 @@
                                 </th>
                                 <th>
                                     <asp:LinkButton ID="lBtnYear" runat="server" CommandName="Year" Text="Year"></asp:LinkButton>
+                                </th>
+                                <th>
+                                    <asp:LinkButton ID="lBtnExpSubCategory" runat="server" CommandName="ExpSubCategory" Text="Exp. Sub-Category"></asp:LinkButton>
                                 </th>
                                 <th>&nbsp;</th>
                             </tr>
@@ -115,6 +118,9 @@
                             </td>
                             <td>
                                 <asp:Literal ID="litYear" runat="server"></asp:Literal>
+                            </td>
+                            <td>
+                                <asp:Literal ID="litExpSubCategory" runat="server"></asp:Literal>
                             </td>
                             <td>
                                 <div class="submenu-container">
