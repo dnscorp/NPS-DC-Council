@@ -80,6 +80,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
                     var cell = objExcelGenerator.ActiveSheet.Cell(strCellNumber);
                     cell.RichText.AddText(Count.ToString()).SetVerticalAlignment(XLFontVerticalTextAlignmentValues.Superscript);
                     cell.RichText.AddText(str);
+                    cell.Style.Alignment.SetWrapText(true);
                     //objExcelGenerator.SetText(str, strCellNumber, blnShouldMerge, strMergeEndCellNumber);
                     Count++;
                     var Range = objExcelGenerator.ActiveSheet.Range(strCellNumber, strMergeEndCellNumber);
@@ -383,6 +384,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
             List<ExpenditureCategory> lstExpenditureCategoryConverted = lstExpenditureCategories.ConvertAll(x => (ExpenditureCategory)x);
             List<long> lstExpenditureCategoryIds = lstExpenditureCategoryConverted.Select(q => q.ExpenditureCategoryID).ToList();
             //Setting ExpenditureCategory Headers
+            int iStarCount = 0;
             foreach (long categoryid in lstExpenditureCategoryIds)
             {
 
@@ -397,7 +399,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
                 var lstExpendituresForEachCategory = lstExpenditures.Where(q => q.ExpenditureCategory.ExpenditureCategoryID == categoryid);
                 if (lstExpendituresForEachCategory != null && lstExpendituresForEachCategory.Count() > 0)
                 {
-                    int iStarCount = 0;
+                    //int iStarCount = 0;
                     lstExpendituresForEachCategory = lstExpendituresForEachCategory.ToList().OrderBy(q => q.DateOfTransaction).ToList();
                     foreach (Expenditure objExpenditure in lstExpendituresForEachCategory)
                     {
@@ -405,7 +407,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
 
                         string strComment = string.Empty;
 
-                        if (objExpenditure.ExpenditureCategory.Code.ToLower() == "tc")
+                        if (objExpenditure.ExpenditureCategory.Code.ToLower() == "tc" || objExpenditure.ExpenditureCategory.Code.ToLower() == "pc")
                         {
                             if (!String.IsNullOrEmpty(objExpenditure.Comments))
                             {
