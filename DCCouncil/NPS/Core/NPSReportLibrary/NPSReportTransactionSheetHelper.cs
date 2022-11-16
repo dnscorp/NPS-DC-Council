@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClosedXML.Excel;
 using PRIFACT.DCCouncil.NPS.Core.NPSDataHelper;
 using PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.Interfaces;
 using PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary.Utilities;
 using PRIFACT.PRIFACTBase.ClosedXmlHelpers;
-using ClosedXML.Excel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
 {

@@ -44,16 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdHocReportV2Helper.cs" />
     <Compile Include="AdHocReportHelper.cs" />
+    <Compile Include="AdHocReportSummarySheetV2Helper.cs" />
     <Compile Include="AdHocReportSummarySheetHelper.cs" />
     <Compile Include="ExpenditureSubCategoryReportHelper.cs" />
     <Compile Include="ExpenditureSubCategoryReportSummarySheetHelper.cs" />
     <Compile Include="Helper\PurchaseOrderVendorHelper.cs" />
+    <Compile Include="IncludePOInAdHocReportV2.cs" />
     <Compile Include="IncludePOInAdHocReport.cs" />
+    <Compile Include="NPSReportTransactionSheetV2Helper.cs" />
+    <Compile Include="NPSReportV2Helper.cs" />
     <Compile Include="NPSReportHelper.cs" />
     <Compile Include="NPSReportStaffLevelExpenditureSheetHelper.cs" />
+    <Compile Include="NPSReportSummarySheetV2Helper.cs" />
     <Compile Include="NPSReportSummarySheetHelper.cs" />
     <Compile Include="NPSReportTransactionSheetHelper.cs" />
+    <Compile Include="POImporter_V2Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\CellFormatHelper.cs" />
     <Compile Include="Utilities\CellFormatStyleIndex.cs" />

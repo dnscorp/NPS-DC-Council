@@ -262,7 +262,16 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports
 
             List<IDataHelper> lstExpenditures = Expenditure.GetAll(string.Empty, Office.GenerateXml(lstOfficeIds), Convert.ToInt64(hfFiscalYearId.Value), ExpenditureCategory.GenerateXml(lstExpenditureCategoryIds), DateTime.ParseExact(txtAsOfDate.Text, CalendarExtender1.Format, null), -1, 0, 0, 0).Items;
             FiscalYear objFiscalYear = FiscalYear.GetByFiscalYearID(Convert.ToInt64(hfFiscalYearId.Value));
-            Guid downloadGuid = AdHocReportHelper.GenerateAdHocReport(objFiscalYear, lstOfficeIds, lstExpenditureCategoryIds, DateTime.ParseExact(txtAsOfDate.Text, CalendarExtender1.Format, null), lstExpenditures, blnIsYearWise, blnIsMonthWise, blnCustomReportSheet, dtStartDate);
+            var downloadGuid = new Guid();
+            if(objFiscalYear.Year>=2023)
+            {
+                downloadGuid = AdHocReportV2Helper.GenerateAdHocReport(objFiscalYear, lstOfficeIds, lstExpenditureCategoryIds, DateTime.ParseExact(txtAsOfDate.Text, CalendarExtender1.Format, null), lstExpenditures, blnIsYearWise, blnIsMonthWise, blnCustomReportSheet, dtStartDate);
+            }
+            else
+            {
+                downloadGuid = AdHocReportHelper.GenerateAdHocReport(objFiscalYear, lstOfficeIds, lstExpenditureCategoryIds, DateTime.ParseExact(txtAsOfDate.Text, CalendarExtender1.Format, null), lstExpenditures, blnIsYearWise, blnIsMonthWise, blnCustomReportSheet, dtStartDate);
+            }
+            
             Response.Redirect("~/Pages/Download.aspx?Type=AdHocReport&Id=" + downloadGuid.ToString() + "&FY=" + NPSRequestContext.GetContext().FiscalYearSelected.Year.ToString() + "&AsOfDate=" + txtAsOfDate.Text.Trim());
 
         }

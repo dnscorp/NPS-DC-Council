@@ -63,6 +63,8 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             set;
         }
 
+        public int NPSSummarySortOrder { get; set; }
+
         public bool IsSystemDefined
         {
             get;
@@ -387,6 +389,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objExpenditureCategory.IsVendorStaffAndOther = BasicConverter.DbToBoolValue(reader["IsVendorStaffAndOther"]);
             objExpenditureCategory.Name = BasicConverter.DbToStringValue(reader["Name"]);
             objExpenditureCategory.UpdatedDate = BasicConverter.DbToNullableDateValue(reader["UpdatedDate"]);
+            objExpenditureCategory.NPSSummarySortOrder = BasicConverter.DbToIntValue(reader["NPSSummarySortOrder"]);
             return objExpenditureCategory;
         }
 
@@ -412,6 +415,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objExpenditureCategory.Name = BasicConverter.DbToStringValue(reader["ExpenditureCategoryName"]);
             objExpenditureCategory.AppendMonth = BasicConverter.DbToBoolValue(reader["ExpenditureCategoryAppendMonth"]);
             objExpenditureCategory.UpdatedDate = BasicConverter.DbToNullableDateValue(reader["ExpenditureCategoryUpdatedDate"]);
+            objExpenditureCategory.NPSSummarySortOrder = BasicConverter.DbToIntValue(reader["NPSSummarySortOrder"]);
             return objExpenditureCategory;
         }
 

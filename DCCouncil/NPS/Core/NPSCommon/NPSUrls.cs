@@ -9,11 +9,13 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSCommon
     public static class NPSUrls
     {
         public const string Dashboard = "/Pages/Dashboard";
+        public const string DashboardV2 = "/Pages/DashboardV2";
         public const string Login = "/Pages/Login";
         public const string Error = "/Pages/Error";
 
         //Members        
         public const string PurchaseOrders = "/Pages/Members/PurchaseOrders";
+        public const string PurchaseOrdersV2 = "/Pages/Members/PurchaseOrdersV2";
         public const string Expenditures = "/Pages/Members/Expenditures";
         public const string RecurringTransactions = "/Pages/Members/RecurringTransactions";
         

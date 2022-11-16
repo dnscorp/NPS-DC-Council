@@ -60,6 +60,9 @@
     <Compile Include="PurchaseOrderDescription.cs" />
     <Compile Include="PurchaseOrderImport.cs" />
     <Compile Include="PurchaseOrderImportSummary.cs" />
+    <Compile Include="PurchaseOrderImport_V2.cs" />
+    <Compile Include="PurchaseOrders_Temp_V2.cs" />
+    <Compile Include="PurchaseOrders_V2.cs" />
     <Compile Include="RecurringTransactionForReport.cs" />
     <Compile Include="RecurringTransactions.cs" />
     <Compile Include="ResultInfo.cs" />
@@ -71,6 +74,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserProfile.cs" />
     <Compile Include="Vendors.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrderAdhocReportViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrderExpendedViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrderItemV2ViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrderObligatedViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrdersV2ViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrderTransactionsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Libraries\PRIFACTBase\PRIFACT.PRIFACTBase.csproj">

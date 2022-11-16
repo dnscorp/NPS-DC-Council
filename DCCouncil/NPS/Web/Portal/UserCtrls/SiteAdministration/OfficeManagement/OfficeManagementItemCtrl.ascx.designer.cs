@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeManagement {
-    
-    
-    public partial class OfficeManagementItemCtrl {
-        
+namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeManagement
+{
+
+
+    public partial class OfficeManagementItemCtrl
+    {
+
         /// <summary>
         /// divItemPopup control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divItemPopup;
-        
+
         /// <summary>
         /// hfMode control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfMode;
-        
+
         /// <summary>
         /// hfOfficeId control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfOfficeId;
-        
+
         /// <summary>
         /// txtOfficeName control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtOfficeName;
-        
+
         /// <summary>
         /// cvalOfficeName control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvalOfficeName;
-        
+
         /// <summary>
         /// txtActiveFrom control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtActiveFrom;
-        
+
         /// <summary>
         /// CalendarExtender1 control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
-        
+
         /// <summary>
         /// cvalActiveFrom control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvalActiveFrom;
-        
+
         /// <summary>
         /// txtActiveTo control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtActiveTo;
-        
+
         /// <summary>
         /// CalendarExtender2 control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender2;
-        
+
         /// <summary>
         /// cvalActiveTo control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator cvalActiveTo;
-        
+
         /// <summary>
         /// txtPCA control.
         /// </summary>
@@ -119,16 +121,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPCA;
-        
-        /// <summary>
-        /// cvalPCA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvalPCA;
-        
+
         /// <summary>
         /// txtPCATitle control.
         /// </summary>
@@ -137,7 +130,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPCATitle;
-        
+
         /// <summary>
         /// txtIndexCode control.
         /// </summary>
@@ -146,16 +139,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIndexCode;
-        
-        /// <summary>
-        /// cvalIndexCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvalIndexCode;
-        
+
         /// <summary>
         /// txtIndexTitle control.
         /// </summary>
@@ -164,7 +148,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIndexTitle;
-        
+
         /// <summary>
         /// txtCompCode control.
         /// </summary>
@@ -173,7 +157,61 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCompCode;
-        
+
+        /// <summary>
+        /// txtProgram control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProgram;
+
+        /// <summary>
+        /// cvalProgram control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvalProgram;
+
+        /// <summary>
+        /// txtCost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCost;
+
+        /// <summary>
+        /// cvalCost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvalCost;
+
+        /// <summary>
+        /// txtAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAccount;
+
+        /// <summary>
+        /// cvalAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cvalAccount;
+
         /// <summary>
         /// lnkSubmit control.
         /// </summary>
@@ -182,7 +220,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkSubmit;
-        
+
         /// <summary>
         /// lnkCancel control.
         /// </summary>

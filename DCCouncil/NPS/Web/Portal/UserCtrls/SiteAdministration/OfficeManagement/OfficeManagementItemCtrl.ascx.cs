@@ -76,7 +76,9 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
                 txtPCA.Text = objOffice.PCA;
                 txtPCATitle.Text = objOffice.PCATitle;
                 txtCompCode.Text = objOffice.CompCode;
-
+                txtProgram.Text = objOffice.Program;
+                txtCost.Text = objOffice.CostCenter;
+                txtAccount.Text = objOffice.Account;
             }
             else
             {
@@ -88,6 +90,9 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
                 txtPCA.Text = string.Empty;
                 txtPCATitle.Text = string.Empty;
                 txtCompCode.Text = string.Empty;
+                txtProgram.Text = string.Empty;
+                txtCost.Text = string.Empty;
+                txtAccount.Text = string.Empty;
             }
         }
         #endregion
@@ -140,11 +145,11 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
                 //Creating the user
                 if ((String.IsNullOrEmpty(txtActiveTo.Text.Trim())))
                 {
-                    Office.Create(txtOfficeName.Text.Trim(), DateTime.ParseExact(txtActiveFrom.Text.ToString(), CalendarExtender1.Format, null), null, txtPCA.Text.Trim(), txtPCATitle.Text.Trim(), txtIndexCode.Text.Trim(), txtIndexTitle.Text.Trim(), false,txtCompCode.Text.Trim());
+                    Office.Create(txtOfficeName.Text.Trim(), DateTime.ParseExact(txtActiveFrom.Text.ToString(), CalendarExtender1.Format, null), null, txtPCA.Text.Trim(), txtPCATitle.Text.Trim(), txtIndexCode.Text.Trim(), txtIndexTitle.Text.Trim(), false,txtCompCode.Text.Trim(),txtProgram.Text.Trim(),txtCost.Text.Trim(),txtAccount.Text.Trim());
                 }
                 else
                 {
-                    Office.Create(txtOfficeName.Text.Trim(), DateTime.ParseExact(txtActiveFrom.Text.ToString(), CalendarExtender1.Format, null), DateTime.ParseExact(txtActiveTo.Text.ToString(), CalendarExtender2.Format, null), txtPCA.Text.Trim(), txtPCATitle.Text.Trim(), txtIndexCode.Text.Trim(), txtIndexTitle.Text.Trim(), false,txtCompCode.Text.Trim());
+                    Office.Create(txtOfficeName.Text.Trim(), DateTime.ParseExact(txtActiveFrom.Text.ToString(), CalendarExtender1.Format, null), DateTime.ParseExact(txtActiveTo.Text.ToString(), CalendarExtender2.Format, null), txtPCA.Text.Trim(), txtPCATitle.Text.Trim(), txtIndexCode.Text.Trim(), txtIndexTitle.Text.Trim(), false,txtCompCode.Text.Trim(), txtProgram.Text.Trim(), txtCost.Text.Trim(), txtAccount.Text.Trim());
                 }
                 UIHelper.SetSuccessMessage("Office added successfully");
             }
@@ -168,6 +173,9 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
                 objOffice.PCA = txtPCA.Text.Trim();
                 objOffice.PCATitle = txtPCATitle.Text.Trim();
                 objOffice.CompCode = txtCompCode.Text.Trim();
+                objOffice.Program = txtProgram.Text.Trim();
+                objOffice.CostCenter = txtCost.Text.Trim();
+                objOffice.Account = txtAccount.Text.Trim();
                 objOffice.Update();
                 UIHelper.SetSuccessMessage("Office updated successfully");
             }
@@ -281,28 +289,28 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
                 }
             }
         }
-        protected void cvalPCA_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            CustomValidator cv = (CustomValidator)source;
-            if (string.IsNullOrEmpty(txtPCA.Text.Trim()))
-            {
-                cv.ErrorMessage = "PCA should not be empty";
-                args.IsValid = false;
-                return;
-            }
+        //protected void cvalPCA_ServerValidate(object source, ServerValidateEventArgs args)
+        //{
+        //    CustomValidator cv = (CustomValidator)source;
+        //    if (string.IsNullOrEmpty(txtPCA.Text.Trim()))
+        //    {
+        //        cv.ErrorMessage = "PCA should not be empty";
+        //        args.IsValid = false;
+        //        return;
+        //    }
 
-        }
-        protected void cvalIndexCode_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            CustomValidator cv = (CustomValidator)source;
-            if (string.IsNullOrEmpty(txtIndexCode.Text.Trim()))
-            {
-                cv.ErrorMessage = "Index Code should not be empty";
-                args.IsValid = false;
-                return;
-            }
+        //}
+        //protected void cvalIndexCode_ServerValidate(object source, ServerValidateEventArgs args)
+        //{
+        //    CustomValidator cv = (CustomValidator)source;
+        //    if (string.IsNullOrEmpty(txtIndexCode.Text.Trim()))
+        //    {
+        //        cv.ErrorMessage = "Index Code should not be empty";
+        //        args.IsValid = false;
+        //        return;
+        //    }
 
-        }
+        //}
 
         protected void cvalCompCode_ServerValidate(object source, ServerValidateEventArgs args)
         {
@@ -317,5 +325,38 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.SiteAdministration.OfficeMa
         }
 
         #endregion
+
+        protected void cvalProgram_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            CustomValidator cv = (CustomValidator)source;
+            if (string.IsNullOrEmpty(txtProgram.Text.Trim()))
+            {
+                cv.ErrorMessage = "Program should not be empty";
+                args.IsValid = false;
+                return;
+            }
+        }
+
+        protected void cvalCost_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            CustomValidator cv = (CustomValidator)source;
+            if (string.IsNullOrEmpty(txtCost.Text.Trim()))
+            {
+                cv.ErrorMessage = "Cost should not be empty";
+                args.IsValid = false;
+                return;
+            }
+        }
+
+        protected void cvalAccount_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            CustomValidator cv = (CustomValidator)source;
+            if (string.IsNullOrEmpty(txtAccount.Text.Trim()))
+            {
+                cv.ErrorMessage = "Account should not be empty";
+                args.IsValid = false;
+                return;
+            }
+        }
     }
 }

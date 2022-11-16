@@ -55,6 +55,20 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls
         {
             //The data needs to be binded here since the viewstate is disabled and we need the posted values to determine the data to be fetched.
             _SetUI();
+
+            var fiscalYear = NPSRequestContext.GetContext().FiscalYearSelected;
+            if (fiscalYear != null)
+            {
+                if (fiscalYear.Year >= 2023) //Council was using a different PO excel file till 2022. This has changed in 2023.
+                {
+                    litPurchaseOrderLink.Text = "<a href=" + PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.PurchaseOrdersV2 + "><div class='thumbnail'><img alt='' src='/images/po.jpg'><p>Purchase Orders</p></div></a>";
+                }
+                else
+                {
+                    litPurchaseOrderLink.Text = "<a href=" + PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.PurchaseOrders + "><div class='thumbnail'><img alt='' src='/images/po.jpg'><p>Purchase Orders</p></div></a>";
+                }
+            }
+                
             _BindData(txtSearch.Text.Trim(), PagerCtrl1.PageSize, PagerCtrl1.CurrentPage, SortField, OrderByDirection, rdoOptions.SelectedValue);
             txtSearch.Attributes.Add("onchange", string.Format("javascript:doButtonClick('{0}');", bttn.ClientID));
         }

@@ -80,6 +80,24 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSCommon
                 return ConfigReader.GetValue("PurchaseOrderImportSheet3Name");
             }
         }
+        public static string AgingBalanceSheetName
+        {
+            get
+            {
+                return ConfigReader.GetValue("AgingBalanceSheetName");
+            }
+        }
+        public static string CloseoutBalanceSheetName
+        {
+            get
+            {
+                return ConfigReader.GetValue("CloseoutBalanceSheetName");
+            }
+        }
+        public static string FirstRowFirstColumnHeaderName
+        {
+            get { return ConfigReader.GetValue("FirstRowFirstColumnHeaderName"); }
+        }
         public static string ExcelSheetPrefix
         {
             get
@@ -168,6 +186,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSCommon
             }
         }
 
+        public static string ReportType_NPS_Only = "NPS_ONLY";
+        public static string ReportType_Training_Only = "TRAINING_ONLY";
+        public static string ReportType_NPS_And_Training = "NPS_AND_TRAINING";
 
     }
 }

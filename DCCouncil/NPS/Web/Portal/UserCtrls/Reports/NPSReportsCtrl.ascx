@@ -75,6 +75,12 @@
                         <th>
                             <asp:LinkButton ID="lBtnIndexTitle" runat="server" CommandName="IndexTitle" Text="Index Title"></asp:LinkButton></th>
                         <th>
+                            <asp:LinkButton ID="lBtnProgram" runat="server" CommandName="Program" Text="Program"></asp:LinkButton></th>
+                        <th>
+                            <asp:LinkButton ID="lBtnCostCenter" runat="server" CommandName="CostCenter" Text="Cost Center"></asp:LinkButton></th>
+                        <th>
+                            <asp:LinkButton ID="lBtnAccount" runat="server" CommandName="Account" Text="Account"></asp:LinkButton></th>
+                        <th>
                             <asp:LinkButton ID="lBtnCreatedDate" runat="server" CommandName="CreatedDate" Text="Created Date"></asp:LinkButton></th>
                         <th>
                             <asp:LinkButton ID="lBtnUpdatedDate" runat="server" CommandName="UpdatedDate" Text="Updated Date"></asp:LinkButton></th>
@@ -103,6 +109,15 @@
                     </td>
                     <td>
                         <asp:Literal ID="litIndexTitle" runat="server"></asp:Literal>
+                    </td>
+                    <td>
+                        <asp:Literal ID="litProgram" runat="server"></asp:Literal>
+                    </td>
+                    <td>
+                        <asp:Literal ID="litCost" runat="server"></asp:Literal>
+                    </td>
+                    <td>
+                        <asp:Literal ID="litAccount" runat="server"></asp:Literal>
                     </td>
                     <td>
                         <asp:Literal ID="litCreatedDate" runat="server"></asp:Literal>

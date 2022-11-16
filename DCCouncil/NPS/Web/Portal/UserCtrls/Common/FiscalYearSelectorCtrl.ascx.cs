@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PRIFACT.DCCouncil.NPS.Core.NPSApi.SessionHelper;
+using PRIFACT.DCCouncil.NPS.Core.NPSCommon;
 using PRIFACT.DCCouncil.NPS.Core.NPSCommon.Enums.SortFields;
 using PRIFACT.DCCouncil.NPS.Core.NPSDataHelper;
 using PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.Interfaces;
@@ -46,7 +47,17 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
             objUser.Update();
             SessionManager.GetSessionData().LoggedInUser = objUser;
             NPSRequestContext.RefreshContext();
-            Response.Redirect(UrlUtility.FullCurrentPageUrlWithQV);
+            var url = UrlUtility.FullCurrentPageUrlWithQV;
+            if(url.Contains("Dashboard"))
+            {
+                var fiscalYear = NPSRequestContext.GetContext().FiscalYearSelected;
+                if (fiscalYear != null && fiscalYear.Year >= 2023)
+                    Response.Redirect(NPSUrls.DashboardV2);
+                else
+                    Response.Redirect(NPSUrls.Dashboard);
+            }
+            else
+                Response.Redirect(UrlUtility.FullCurrentPageUrlWithQV);
         }
     }
 }

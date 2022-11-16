@@ -38,11 +38,11 @@
             </td>
         </tr>
         <tr>
-            <th><span class="required">*</span>PCA</th>
+            <th>PCA</th>
             <td>
                 <asp:TextBox ID="txtPCA" runat="server"></asp:TextBox></td>
             <td>
-                <asp:CustomValidator CssClass="error" ID="cvalPCA" runat="server" OnServerValidate="cvalPCA_ServerValidate" Display="Dynamic" ValidationGroup="ValGroup1"></asp:CustomValidator>
+                <%--<asp:CustomValidator CssClass="error" ID="cvalPCA" runat="server" OnServerValidate="cvalPCA_ServerValidate" Display="Dynamic" ValidationGroup="ValGroup1"></asp:CustomValidator>--%>
             </td>
         </tr>
         <tr>
@@ -52,11 +52,11 @@
             <td></td>
         </tr>
         <tr>
-            <th><span class="required">*</span>Index Code</th>
+            <th>Index Code</th>
             <td>
                 <asp:TextBox ID="txtIndexCode" runat="server"></asp:TextBox></td>
             <td>
-                <asp:CustomValidator CssClass="error" ID="cvalIndexCode" runat="server" OnServerValidate="cvalIndexCode_ServerValidate" Display="Dynamic" ValidationGroup="ValGroup1"></asp:CustomValidator>
+                <%--<asp:CustomValidator CssClass="error" ID="cvalIndexCode" runat="server" OnServerValidate="cvalIndexCode_ServerValidate" Display="Dynamic" ValidationGroup="ValGroup1"></asp:CustomValidator>--%>
             </td>
         </tr>
         <tr>
@@ -72,6 +72,30 @@
             <td>
                
 
+            </td>
+        </tr>
+        <tr>
+            <th><span class="required">*</span>Program</th>
+            <td>
+                <asp:TextBox ID="txtProgram" runat="server"></asp:TextBox></td>
+            <td>
+                <asp:CustomValidator CssClass="error" ID="cvalProgram" runat="server" OnServerValidate="cvalProgram_ServerValidate" Display="Dynamic" ValidationGroup="ValGroup1"></asp:CustomValidator>
+            </td>
+        </tr>
+        <tr>
+            <th><span class="required">*</span>Cost</th>
+            <td>
+                <asp:TextBox ID="txtCost" runat="server"></asp:TextBox></td>
+            <td>
+                <asp:CustomValidator CssClass="error" ID="cvalCost" runat="server" OnServerValidate="cvalCost_ServerValidate" Display="Dynamic" ValidationGroup="ValGroup1"></asp:CustomValidator>
+            </td>
+        </tr>
+        <tr>
+            <th><span class="required">*</span>Account</th>
+            <td>
+                <asp:TextBox ID="txtAccount" runat="server"></asp:TextBox></td>
+            <td>
+                <asp:CustomValidator CssClass="error" ID="cvalAccount" runat="server" OnServerValidate="cvalAccount_ServerValidate" Display="Dynamic" ValidationGroup="ValGroup1"></asp:CustomValidator>
             </td>
         </tr>
         <tr class="form-button">

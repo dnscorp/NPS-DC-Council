@@ -167,12 +167,15 @@
     <Content Include="Images\voucher.jpg" />
     <Content Include="packages.config" />
     <Content Include="IFrame.Master" />
+    <Content Include="Pages\DashboardV2.aspx" />
     <Content Include="Pages\Dashboard.aspx" />
     <Content Include="Pages\Download.aspx" />
     <Content Include="Pages\Error.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Members\Expenditures.aspx" />
+    <Content Include="Pages\Members\PurchaseOrdersV2.aspx" />
     <Content Include="Pages\Members\PurchaseOrders.aspx" />
+    <Content Include="Pages\Members\PurchaseOrder\ImportV2.aspx" />
     <Content Include="Pages\Members\PurchaseOrder\Import.aspx" />
     <Content Include="Pages\Members\RecurringTransactions.aspx" />
     <Content Include="Pages\Members\TelephoneTransactions\Import.aspx" />
@@ -219,10 +222,14 @@
     <Content Include="UserCtrls\Common\PagerCtrl.ascx" />
     <Content Include="UserCtrls\Common\PopupCtrl.ascx" />
     <Content Include="UserCtrls\Common\RecurringItemCtrl.ascx" />
+    <Content Include="UserCtrls\DashboardV2Ctrl.ascx" />
     <Content Include="UserCtrls\DashboardCtrl.ascx" />
     <Content Include="UserCtrls\LoginCtrl.ascx" />
+    <Content Include="UserCtrls\Members\PurchaseOrderItemV2Ctrl.ascx" />
     <Content Include="UserCtrls\Members\PurchaseOrderItemCtrl.ascx" />
+    <Content Include="UserCtrls\Members\PurchaseOrdersV2Ctrl.ascx" />
     <Content Include="UserCtrls\Members\PurchaseOrdersCtrl.ascx" />
+    <Content Include="UserCtrls\Members\PurchaseOrder\ImportV2Ctrl.ascx" />
     <Content Include="UserCtrls\Members\PurchaseOrder\ImportCtrl.ascx" />
     <Content Include="UserCtrls\Members\TelephoneTransaction\ImportCtrl.ascx" />
     <Content Include="UserCtrls\Common\RecurringCtrl.ascx" />
@@ -272,6 +279,13 @@
     <Compile Include="IFrame.Master.designer.cs">
       <DependentUpon>IFrame.Master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DashboardV2.aspx.cs">
+      <DependentUpon>DashboardV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DashboardV2.aspx.designer.cs">
+      <DependentUpon>DashboardV2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -307,12 +321,26 @@
     <Compile Include="Pages\Members\Expenditures.aspx.designer.cs">
       <DependentUpon>Expenditures.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Members\PurchaseOrdersV2.aspx.cs">
+      <DependentUpon>PurchaseOrdersV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Members\PurchaseOrdersV2.aspx.designer.cs">
+      <DependentUpon>PurchaseOrdersV2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Members\PurchaseOrders.aspx.cs">
       <DependentUpon>PurchaseOrders.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\Members\PurchaseOrders.aspx.designer.cs">
       <DependentUpon>PurchaseOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Members\PurchaseOrder\ImportV2.aspx.cs">
+      <DependentUpon>ImportV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Members\PurchaseOrder\ImportV2.aspx.designer.cs">
+      <DependentUpon>ImportV2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Members\PurchaseOrder\Import.aspx.cs">
       <DependentUpon>Import.aspx</DependentUpon>
@@ -511,6 +539,13 @@
     <Compile Include="UserCtrls\Common\RecurringItemCtrl.ascx.designer.cs">
       <DependentUpon>RecurringItemCtrl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserCtrls\DashboardV2Ctrl.ascx.cs">
+      <DependentUpon>DashboardV2Ctrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCtrls\DashboardV2Ctrl.ascx.designer.cs">
+      <DependentUpon>DashboardV2Ctrl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserCtrls\DashboardCtrl.ascx.cs">
       <DependentUpon>DashboardCtrl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -525,6 +560,13 @@
     <Compile Include="UserCtrls\LoginCtrl.ascx.designer.cs">
       <DependentUpon>LoginCtrl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserCtrls\Members\PurchaseOrderItemV2Ctrl.ascx.cs">
+      <DependentUpon>PurchaseOrderItemV2Ctrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCtrls\Members\PurchaseOrderItemV2Ctrl.ascx.designer.cs">
+      <DependentUpon>PurchaseOrderItemV2Ctrl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserCtrls\Members\PurchaseOrderItemCtrl.ascx.cs">
       <DependentUpon>PurchaseOrderItemCtrl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -532,12 +574,26 @@
     <Compile Include="UserCtrls\Members\PurchaseOrderItemCtrl.ascx.designer.cs">
       <DependentUpon>PurchaseOrderItemCtrl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="UserCtrls\Members\PurchaseOrdersV2Ctrl.ascx.cs">
+      <DependentUpon>PurchaseOrdersV2Ctrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCtrls\Members\PurchaseOrdersV2Ctrl.ascx.designer.cs">
+      <DependentUpon>PurchaseOrdersV2Ctrl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserCtrls\Members\PurchaseOrdersCtrl.ascx.cs">
       <DependentUpon>PurchaseOrdersCtrl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserCtrls\Members\PurchaseOrdersCtrl.ascx.designer.cs">
       <DependentUpon>PurchaseOrdersCtrl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserCtrls\Members\PurchaseOrder\ImportV2Ctrl.ascx.cs">
+      <DependentUpon>ImportV2Ctrl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCtrls\Members\PurchaseOrder\ImportV2Ctrl.ascx.designer.cs">
+      <DependentUpon>ImportV2Ctrl.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserCtrls\Members\PurchaseOrder\ImportCtrl.ascx.cs">
       <DependentUpon>ImportCtrl.ascx</DependentUpon>

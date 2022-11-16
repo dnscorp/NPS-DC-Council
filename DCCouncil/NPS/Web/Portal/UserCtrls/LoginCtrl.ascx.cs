@@ -35,7 +35,11 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls
             else
             {
                 FormsAuthentication.SetAuthCookie(this.txtUsername.Text.Trim(), false);
-                Response.Redirect(NPSUrls.Dashboard);
+                var fiscalYear = NPSRequestContext.GetContext().FiscalYearSelected;
+                if(fiscalYear!=null && fiscalYear.Year >= 2023)
+                    Response.Redirect(NPSUrls.DashboardV2);
+                else
+                    Response.Redirect(NPSUrls.Dashboard);
             }
         }
     }

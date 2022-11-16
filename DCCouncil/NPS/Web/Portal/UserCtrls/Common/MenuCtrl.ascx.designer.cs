@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common {
-    
-    
-    public partial class MenuCtrl {
-        
+namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
+{
+
+
+    public partial class MenuCtrl
+    {
+
         /// <summary>
         /// rptrExpenditureCategories control.
         /// </summary>
@@ -20,5 +22,14 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptrExpenditureCategories;
+
+        /// <summary>
+        /// litPurchaseOrderLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litPurchaseOrderLink;
     }
 }

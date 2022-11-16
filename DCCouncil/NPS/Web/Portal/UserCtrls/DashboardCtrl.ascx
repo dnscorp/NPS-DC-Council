@@ -13,12 +13,13 @@
                 </a>
             </li>
             <li class="span3">
-                <a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.PurchaseOrders%>">
+                <asp:Literal ID="litPurchaseOrderLink" runat="server"></asp:Literal>
+                <%--<a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.PurchaseOrders%>">
                     <div class="thumbnail">
                         <img alt="" src="/images/po.jpg">
                         <p>Purchase Orders</p>
                     </div>
-                </a>
+                </a>--%>
             </li>
             <li class="span3">
                 <a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.Expenditures + "?Code=PC"%>">

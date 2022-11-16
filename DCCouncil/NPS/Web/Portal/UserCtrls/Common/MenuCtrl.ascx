@@ -11,8 +11,11 @@
                             <li><a runat="server" id="lnkExpenditure"></a></li>
                         </ItemTemplate>
                     </asp:Repeater>
+                    <% %>
                     <li><a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.RecurringTransactions%>">Recurring Transactions</a></li>
-                    <li><a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.PurchaseOrders%>">Purchase Orders</a></li>
+                    <li><asp:Literal ID="litPurchaseOrderLink" runat="server"></asp:Literal></li>
+                    <%--<li><a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.PurchaseOrders%>">Purchase Orders</a></li>--%>
+                    <%--<li><a href="~/Pages/Members/PurchaseOrder/ImportV2" runat="server">Import Purchase Order</a></li>--%>
                 </ul>
             </li>
             <li>

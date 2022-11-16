@@ -1,6 +1,7 @@
 ﻿using PRIFACT.DCCouncil.NPS.Core.NPSCommon;
 using PRIFACT.DCCouncil.NPS.Core.NPSDataHelper;
 using PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.Interfaces;
+using PRIFACT.DCCouncil.NPS.Web.Portal.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,20 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //MasterPage mstr = this.Parent.Page.Master as MasterPage;
+            //DropDownList ddlFiscalYears = (DropDownList)mstr.FindControl("ctl00$HeaderCtrl1$FiscalYearSelectorCtrl1$ddlFiscalYears");
+            var fiscalYear = NPSRequestContext.GetContext().FiscalYearSelected;
+            if (fiscalYear!=null)
+            {
+                if (fiscalYear.Year>=2023) //Council was using a different PO excel file till 2022. This has changed in 2023.
+                {
+                    litPurchaseOrderLink.Text = "<a href=" + NPSUrls.PurchaseOrdersV2 + ">Purchase Orders</a>";
+                }
+                else
+                {
+                    litPurchaseOrderLink.Text = "<a href=" + NPSUrls.PurchaseOrders + ">Purchase Orders</a>";
+                }
+            }
             _BindExpenditureCategories();
         }
 

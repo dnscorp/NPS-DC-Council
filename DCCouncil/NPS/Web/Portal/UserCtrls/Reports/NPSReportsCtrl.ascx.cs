@@ -109,6 +109,9 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports
                 Literal litPCATitle = e.Item.FindControl("litPCATitle") as Literal;
                 Literal litIndexCode = e.Item.FindControl("litIndexCode") as Literal;
                 Literal litIndexTitle = e.Item.FindControl("litIndexTitle") as Literal;
+                Literal litProgram = e.Item.FindControl("litProgram") as Literal;
+                Literal litCost = e.Item.FindControl("litCost") as Literal;
+                Literal litAccount = e.Item.FindControl("litAccount") as Literal;
                 Literal litCreatedDate = e.Item.FindControl("litCreatedDate") as Literal;
                 Literal litUpdatedDate = e.Item.FindControl("litUpdatedDate") as Literal;
 
@@ -125,6 +128,9 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Reports
                 litPCATitle.Text = objOffice.PCATitle;
                 litIndexCode.Text = objOffice.IndexCode;
                 litIndexTitle.Text = objOffice.IndexTitle;
+                litProgram.Text = objOffice.Program;
+                litCost.Text = objOffice.CostCenter;
+                litAccount.Text = objOffice.Account;
                 litCreatedDate.Text = UIHelper.GetDateTimeInDefaultFormat(objOffice.CreatedDate);
                 litUpdatedDate.Text = UIHelper.GetDateTimeInDefaultFormat(objOffice.UpdatedDate);
                 lnkGenerateNPSReport.Attributes.Add("OfficeId", objOffice.OfficeID.ToString());

@@ -69,6 +69,21 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             get;
             set;
         }
+        public string Program
+        {
+            get;
+            set;
+        }
+        public string CostCenter
+        {
+            get;
+            set;
+        }
+        public string Account
+        {
+            get;
+            set;
+        }
         public bool IsDeleted
         {
             get;
@@ -129,7 +144,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             return AppSettings.DbConnectionString;
         }
 
-        public static void Create(string strOfficeName, DateTime dtActiveFrom, DateTime? dtActiveTo, string strPCA, string strPCATitle, string strIndexCode, string IndexTitle, bool blnIsDeleted, string strCompCode)
+        public static void Create(string strOfficeName, DateTime dtActiveFrom, DateTime? dtActiveTo, string strPCA, string strPCATitle, string strIndexCode, string IndexTitle, bool blnIsDeleted, string strCompCode, string strProgram, string strCost, string strAccount)
         {
             new SafeDBExecute<bool>(delegate(DBContext dbContext)
             {
@@ -162,6 +177,15 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
 
                 param = cmd.Parameters.Add("@CompCode", SqlDbType.NVarChar);
                 param.Value = BasicConverter.StringToDbValue(strCompCode);
+
+                param = cmd.Parameters.Add("@Program", SqlDbType.NVarChar);
+                param.Value = BasicConverter.StringToDbValue(strProgram);
+
+                param = cmd.Parameters.Add("@Cost", SqlDbType.NVarChar);
+                param.Value = BasicConverter.StringToDbValue(strCost);
+
+                param = cmd.Parameters.Add("@Account", SqlDbType.NVarChar);
+                param.Value = BasicConverter.StringToDbValue(strAccount);
 
                 param = cmd.Parameters.Add("@IsDeleted", SqlDbType.Bit);
                 param.Value = BasicConverter.BoolToDbValue(blnIsDeleted);
@@ -211,6 +235,15 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
 
                     param = cmd.Parameters.Add("@CompCode", SqlDbType.NVarChar);
                     param.Value = BasicConverter.StringToDbValue(this.CompCode);
+
+                    param = cmd.Parameters.Add("@Program", SqlDbType.NVarChar);
+                    param.Value = BasicConverter.StringToDbValue(this.Program);
+
+                    param = cmd.Parameters.Add("@Cost", SqlDbType.NVarChar);
+                    param.Value = BasicConverter.StringToDbValue(this.CostCenter);
+
+                    param = cmd.Parameters.Add("@Account", SqlDbType.NVarChar);
+                    param.Value = BasicConverter.StringToDbValue(this.Account);
 
                     cmd.ExecuteNonQuery();
 
@@ -351,6 +384,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objOffice.CreatedDate = BasicConverter.DbToDateValue(reader["CreatedDate"]);
             objOffice.UpdatedDate = BasicConverter.DbToNullableDateValue(reader["UpdatedDate"]);
             objOffice.CompCode = BasicConverter.DbToStringValue(reader["CompCode"]);
+            objOffice.Program = BasicConverter.DbToStringValue(reader["Program"]);
+            objOffice.CostCenter = BasicConverter.DbToStringValue(reader["CostCenter"]);
+            objOffice.Account = BasicConverter.DbToStringValue(reader["Account"]);
 
             return objOffice;
         }
@@ -370,6 +406,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objOffice.CreatedDate = BasicConverter.DbToDateValue(reader["OfficeCreatedDate"]);
             objOffice.UpdatedDate = BasicConverter.DbToNullableDateValue(reader["OfficeUpdatedDate"]);
             objOffice.CompCode = BasicConverter.DbToStringValue(reader["OfficeCompCode"]);
+            objOffice.Program = BasicConverter.DbToStringValue(reader["OfficeProgram"]);
+            objOffice.CostCenter = BasicConverter.DbToStringValue(reader["OfficeCostCenter"]);
+            objOffice.Account = BasicConverter.DbToStringValue(reader["OfficeAccount"]);
             return objOffice;
         }
 
