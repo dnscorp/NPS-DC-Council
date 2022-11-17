@@ -30,7 +30,8 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
             _SetHeaderforFixedCustomAdhocReports(objExcelGenerator, strCategoryWiseReportSheetHeader, lstExpenditureCategories.Count+2);
             _SetColumnHeading(objExcelGenerator, "OfficeName", "A2", "A2");
             _SetColumnHeading(objExcelGenerator, "IndexCode", "B2", "B2");
-            int iColNumber = 3;
+            _SetColumnHeading(objExcelGenerator, "Cost Center", "C2", "C2");
+            int iColNumber = 4;
 
             iColNumber = _setColumnHeading(objExcelGenerator, lstExpenditureCategories, iColNumber);
 
@@ -38,10 +39,11 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
 
             foreach (Office objOffice in lstOffices)
             {
-                iColNumber = 3;
+                iColNumber = 4;
 
                 _SetOfficeCode(objExcelGenerator, objOffice, iRowNumber);
                 _SetOfficeIndexCode(objExcelGenerator, objOffice, iRowNumber);
+                _SetOfficeCostCenter(objExcelGenerator, objOffice, iRowNumber);
 
                 foreach (ExpenditureCategory item in lstExpenditureCategories)
                 {
@@ -84,14 +86,18 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
                     {
                         //PO Block Starts
                         //Get all the Purchase orders for the selected office and fiscal year
-                        POSummaryResultInfo POresults;
-                        POresults = PurchaseOrder.GetAllForAdhocPOSummary(string.Empty, objOffice.OfficeID, objFiscalYear.FiscalYearID, dtAsOfDate, dtStartDate, -1, null, Core.NPSCommon.Enums.SortFields.PurchaseOrderSortField.DateOfTransaction, Core.NPSCommon.Enums.OrderByDirection.Ascending);
-                        TotalAmount = POresults.POExpended;
+                        var lstPurchaseOrders = PurchaseOrderAdhocReportSummaryViewModel.GetSummary(objFiscalYear.FiscalYearID, objOffice.OfficeID, dtAsOfDate, dtStartDate);
+                        var expendedAmount = lstPurchaseOrders.Where(s => s.EntryType == "E").Select(s=>s.Amount).FirstOrDefault();
+                        var obligatedAmount = lstPurchaseOrders.Where(s => s.EntryType == "O").Select(s => s.Amount).FirstOrDefault();
+
+                        //POSummaryResultInfo POresults;
+                        //POresults = PurchaseOrder.GetAllForAdhocPOSummary(string.Empty, objOffice.OfficeID, objFiscalYear.FiscalYearID, dtAsOfDate, dtStartDate, -1, null, Core.NPSCommon.Enums.SortFields.PurchaseOrderSortField.DateOfTransaction, Core.NPSCommon.Enums.OrderByDirection.Ascending);
+                        TotalAmount = expendedAmount;
 
                         _SetHeaderforFixedCustomAdhocReports(objExcelGenerator, strCategoryWiseReportSheetHeader, lstExpenditureCategories.Count + 3);
                         _SetReportColumnHeading(objExcelGenerator, "Purchase Orders - Expended", iColNumber);
                         
-                        TotalPOObligated = POresults.POObligated;
+                        TotalPOObligated = obligatedAmount;
                         //PO Block Ends
                     }
                     _SetCategoryWiseExpenditure(objExcelGenerator, TotalAmount, iColNumber, iRowNumber);
@@ -158,6 +164,17 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
             }
         }
 
+        private static void _SetOfficeCostCenter(ExcelGenerator objExcelGenerator, Office objOffice, int iRowNumber)
+        {
+            {
+                string strCellNumber = "C" + iRowNumber;
+                string strEndMergeCellNumber = strCellNumber;
+                bool blnShouldMerge = false;
+                objExcelGenerator.SetText(objOffice.CostCenter, strCellNumber, blnShouldMerge, strEndMergeCellNumber);
+                objExcelGenerator.SetCellFormat(strCellNumber, CellFormatHelper.SetOfficeNameFieldsForFixedExpCategory());
+            }
+        }
+
         private static int _setColumnHeading(ExcelGenerator objExcelGenerator, List<ExpenditureCategory> lstExpenditureCategories, int iColNumber)
         {
             foreach (ExpenditureCategory item in lstExpenditureCategories)
@@ -206,7 +223,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
                     ////All the purchase orders
                     //List<PurchaseOrder> lstPurchaseOrderConverted = lstPurchaseOrders.ConvertAll(q => (PurchaseOrder)q);
 
-                    var lstPurchaseOrders = PurchaseOrderAdhocReportViewModel.GetAll(objFiscalYear.FiscalYearID, officeIds, dtAsOfDate);
+                    var lstPurchaseOrders = PurchaseOrderAdhocReportViewModel.GetYearly(objFiscalYear.FiscalYearID, officeIds, dtAsOfDate);
 
                     IncludePOInAdHocReportV2.GenerateTransactionSheet(objExcelGenerator, objFiscalYear, dtAsOfDate, lstPurchaseOrders);
                 
@@ -261,23 +278,25 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
                             if(objExpenditureCategory.ExpenditureCategoryID!=16)
                                 _GenerateMonthWiseSummarySheet(objExcelGenerator, lstOffices, objExpenditureCategory, dtAsOfDate, objFiscalYear, lstMonthWiseExpenditures, strAsOfDate, dtStartDate);
                             else
-                            { 
+                            {
                                 //PO Block Starts
-                                string officeIDs="";
-                                foreach (Office objOffice in lstOffices)
-                                {
-                                    if (officeIDs == "")
-                                        officeIDs = objOffice.OfficeID.ToString();
-                                    else
-                                        officeIDs = officeIDs + "," + objOffice.OfficeID.ToString();
-                                }
-                                    //Get all the Purchase orders for the selected office and fiscal year
-                                List<IDataHelper> lstPurchaseOrders = PurchaseOrder.GetAllForAdhocPOMonthly(string.Empty, officeIDs, objFiscalYear.FiscalYearID, dtAsOfDate, dtStartDate, dtlocAsOfDate.AddMonths(-1), -1, null, Core.NPSCommon.Enums.SortFields.PurchaseOrderSortField.DateOfTransaction, Core.NPSCommon.Enums.OrderByDirection.Ascending).Items;
+                                var officeIds = lstOffices.Select(s => s.OfficeID).ToList();
+                                //string officeIDs="";
+                                //foreach (Office objOffice in lstOffices)
+                                //{
+                                //    if (officeIDs == "")
+                                //        officeIDs = objOffice.OfficeID.ToString();
+                                //    else
+                                //        officeIDs = officeIDs + "," + objOffice.OfficeID.ToString();
+                                //}
+                                //Get all the Purchase orders for the selected office and fiscal year
+                                var lstPurchaseOrders = PurchaseOrderAdhocReportViewModel.GetMonthly(objFiscalYear.FiscalYearID, officeIds, dtAsOfDate, dtStartDate, dtlocAsOfDate.AddMonths(-1));
+                                //List<IDataHelper> lstPurchaseOrders = PurchaseOrder.GetAllForAdhocPOMonthly(string.Empty, officeIDs, objFiscalYear.FiscalYearID, dtAsOfDate, dtStartDate, dtlocAsOfDate.AddMonths(-1), -1, null, Core.NPSCommon.Enums.SortFields.PurchaseOrderSortField.DateOfTransaction, Core.NPSCommon.Enums.OrderByDirection.Ascending).Items;
 
-                                    //All the purchase orders
-                                    List<PurchaseOrder> lstPurchaseOrderConverted = lstPurchaseOrders.ConvertAll(q => (PurchaseOrder)q);
+                                //    //All the purchase orders
+                                //    List<PurchaseOrder> lstPurchaseOrderConverted = lstPurchaseOrders.ConvertAll(q => (PurchaseOrder)q);
 
-                                    IncludePOInAdHocReport.GenerateTransactionSheetMonthly(objExcelGenerator, objFiscalYear, dtAsOfDate, lstPurchaseOrderConverted, dtlocAsOfDate.AddMonths(-1));
+                                    IncludePOInAdHocReportV2.GenerateTransactionSheetMonthly(objExcelGenerator, objFiscalYear, dtAsOfDate, lstPurchaseOrders, dtlocAsOfDate.AddMonths(-1));
                             
                                 //PO Block Ends
                             }
@@ -331,21 +350,23 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
                             else
                             {
                                 //PO Block Starts
-                                string officeIDs = "";
-                                foreach (Office objOffice in lstOffices)
-                                {
-                                    if (officeIDs == "")
-                                        officeIDs = objOffice.OfficeID.ToString();
-                                    else
-                                        officeIDs = officeIDs + "," + objOffice.OfficeID.ToString();
-                                }
+                                var officeIds = lstOffices.Select(s => s.OfficeID).ToList();
+                                //string officeIDs = "";
+                                //foreach (Office objOffice in lstOffices)
+                                //{
+                                //    if (officeIDs == "")
+                                //        officeIDs = objOffice.OfficeID.ToString();
+                                //    else
+                                //        officeIDs = officeIDs + "," + objOffice.OfficeID.ToString();
+                                //}
                                 //Get all the Purchase orders for the selected office and fiscal year
-                                List<IDataHelper> lstPurchaseOrders = PurchaseOrder.GetAllForAdhocPOMonthly(string.Empty, officeIDs, objFiscalYear.FiscalYearID, dtAsOfDate, dtStartDate, dtlocAsOfDate.AddMonths(-1), -1, null, Core.NPSCommon.Enums.SortFields.PurchaseOrderSortField.DateOfTransaction, Core.NPSCommon.Enums.OrderByDirection.Ascending).Items;
+                                var lstPurchaseOrders = PurchaseOrderAdhocReportViewModel.GetMonthly(objFiscalYear.FiscalYearID, officeIds, dtAsOfDate, dtStartDate, dtlocAsOfDate.AddMonths(-1));
+                                //List<IDataHelper> lstPurchaseOrders = PurchaseOrder.GetAllForAdhocPOMonthly(string.Empty, officeIDs, objFiscalYear.FiscalYearID, dtAsOfDate, dtStartDate, dtlocAsOfDate.AddMonths(-1), -1, null, Core.NPSCommon.Enums.SortFields.PurchaseOrderSortField.DateOfTransaction, Core.NPSCommon.Enums.OrderByDirection.Ascending).Items;
 
-                                //All the purchase orders
-                                List<PurchaseOrder> lstPurchaseOrderConverted = lstPurchaseOrders.ConvertAll(q => (PurchaseOrder)q);
+                                ////All the purchase orders
+                                //List<PurchaseOrder> lstPurchaseOrderConverted = lstPurchaseOrders.ConvertAll(q => (PurchaseOrder)q);
 
-                                IncludePOInAdHocReport.GenerateTransactionSheetMonthly(objExcelGenerator, objFiscalYear, dtAsOfDate, lstPurchaseOrderConverted, dtlocAsOfDate.AddMonths(-1));
+                                IncludePOInAdHocReportV2.GenerateTransactionSheetMonthly(objExcelGenerator, objFiscalYear, dtAsOfDate, lstPurchaseOrders, dtlocAsOfDate.AddMonths(-1));
 
                                 //PO Block Ends
                             }

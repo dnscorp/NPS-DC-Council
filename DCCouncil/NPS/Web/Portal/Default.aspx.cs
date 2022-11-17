@@ -15,11 +15,16 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal
         {
             if (NPSRequestContext.GetContext().LoggedInUser == null)
             {
-                Response.Redirect(NPSUrls.Login+"?ReturnUrl=Dashboard");
+                //Response.Redirect(NPSUrls.Login+"?ReturnUrl=Dashboard");
+                Response.Redirect(NPSUrls.Login);
             }
             else
             {
-                Response.Redirect(NPSUrls.Dashboard);
+                var fiscalYear = NPSRequestContext.GetContext().FiscalYearSelected;
+                if (fiscalYear != null && fiscalYear.Year >= 2023)
+                    Response.Redirect(NPSUrls.DashboardV2);
+                else
+                    Response.Redirect(NPSUrls.Dashboard);                
             }
         }
     }

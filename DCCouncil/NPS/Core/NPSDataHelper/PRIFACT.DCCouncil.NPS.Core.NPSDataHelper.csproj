@@ -75,6 +75,7 @@
     <Compile Include="UserProfile.cs" />
     <Compile Include="Vendors.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrderAdhocReportSummaryViewModel.cs" />
     <Compile Include="ViewModels\PurchaseOrderAdhocReportViewModel.cs" />
     <Compile Include="ViewModels\PurchaseOrderExpendedViewModel.cs" />
     <Compile Include="ViewModels\PurchaseOrderItemV2ViewModel.cs" />

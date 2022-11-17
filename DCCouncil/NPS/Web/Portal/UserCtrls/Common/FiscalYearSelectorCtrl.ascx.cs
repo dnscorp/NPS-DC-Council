@@ -56,6 +56,14 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
                 else
                     Response.Redirect(NPSUrls.Dashboard);
             }
+            else if (url.Contains("PurchaseOrders"))
+            {
+                var fiscalYear = NPSRequestContext.GetContext().FiscalYearSelected;
+                if (fiscalYear != null && fiscalYear.Year >= 2023)
+                    Response.Redirect(NPSUrls.PurchaseOrdersV2);
+                else
+                    Response.Redirect(NPSUrls.PurchaseOrders);
+            }
             else
                 Response.Redirect(UrlUtility.FullCurrentPageUrlWithQV);
         }

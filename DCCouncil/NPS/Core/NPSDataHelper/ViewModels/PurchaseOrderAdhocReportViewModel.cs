@@ -26,7 +26,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.ViewModels
             return AppSettings.DbConnectionString;
         }
 
-        public static List<PurchaseOrderAdhocReportViewModel> GetAll(long fiscalYearId, List<long> officeIds, DateTime asOfDate)
+        public static List<PurchaseOrderAdhocReportViewModel> GetYearly(long fiscalYearId, List<long> officeIds, DateTime asOfDate)
         {
             return new SafeDBExecute<List<PurchaseOrderAdhocReportViewModel>>(delegate (DBContext dbContext)
             {
@@ -52,6 +52,65 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.ViewModels
                                 
                 param = cmd.Parameters.Add("@AsOfDate", SqlDbType.Date);
                 param.Value = BasicConverter.DateToDbValue(asOfDate);
+
+                var lstPurchaseOrderImportSummaries = new List<PurchaseOrderAdhocReportViewModel>();
+                try
+                {
+                    reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        PurchaseOrderAdhocReportViewModel objHelper = _Bind(reader);
+                        lstPurchaseOrderImportSummaries.Add(objHelper);
+                    }
+                }
+                finally
+                {
+                    if (reader != null)
+                    {
+                        DBContext.CloseReader(reader);
+                    }
+                }
+                return lstPurchaseOrderImportSummaries;
+
+            }).DoExecute(GetDbConnectionString());
+        }
+
+        public static List<PurchaseOrderAdhocReportViewModel> GetMonthly(long fiscalYearId, List<long> officeIds, DateTime asOfDate, DateTime? startDate, DateTime fiscalYearDate)
+        {
+            return new SafeDBExecute<List<PurchaseOrderAdhocReportViewModel>>(delegate (DBContext dbContext)
+            {
+                SqlDataReader reader = null;
+                SqlParameter param = null;
+                SqlCommand cmd = dbContext.ContextSqlCommand;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "Proc_Adhoc_Report_PurchaseOrder_Monthly";
+
+                param = cmd.Parameters.Add("@FiscalYearId", SqlDbType.BigInt);
+                param.Value = BasicConverter.LongToDbValue(fiscalYearId);
+
+                param = cmd.Parameters.Add("@OfficeIds", SqlDbType.Structured);
+                param.TypeName = "dbo.OfficeIdList";
+
+                var dt = new DataTable();
+                dt.Columns.Add("Id");
+                foreach (var item in officeIds)
+                {
+                    dt.Rows.Add(item);
+                }
+                param.Value = dt;
+
+                param = cmd.Parameters.Add("@AsOfDate", SqlDbType.Date);
+                param.Value = BasicConverter.DateToDbValue(asOfDate);
+
+                if(startDate.HasValue)
+                { 
+                    param = cmd.Parameters.Add("@StartDate", SqlDbType.Date);
+                    param.Value = BasicConverter.DateToDbValue(startDate.Value);
+                }
+
+                param = cmd.Parameters.Add("@FiscalYearStartDate", SqlDbType.Date);
+                param.Value = BasicConverter.DateToDbValue(fiscalYearDate);
 
                 var lstPurchaseOrderImportSummaries = new List<PurchaseOrderAdhocReportViewModel>();
                 try

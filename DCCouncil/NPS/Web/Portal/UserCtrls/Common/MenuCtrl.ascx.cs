@@ -23,10 +23,12 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Common
             {
                 if (fiscalYear.Year>=2023) //Council was using a different PO excel file till 2022. This has changed in 2023.
                 {
+                    litDashboardLink.Text = "<a href=" + NPSUrls.DashboardV2 + ">Dashboard</a>";
                     litPurchaseOrderLink.Text = "<a href=" + NPSUrls.PurchaseOrdersV2 + ">Purchase Orders</a>";
                 }
                 else
                 {
+                    litDashboardLink.Text = "<a href=" + NPSUrls.Dashboard + ">Dashboard</a>";
                     litPurchaseOrderLink.Text = "<a href=" + NPSUrls.PurchaseOrders + ">Purchase Orders</a>";
                 }
             }

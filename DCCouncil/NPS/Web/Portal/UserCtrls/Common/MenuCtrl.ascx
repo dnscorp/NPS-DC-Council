@@ -2,7 +2,8 @@
 <div class="menu">
     <div class="inner">
         <ul>
-            <li><a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.Dashboard %>">Dashboard</a></li>
+            <li><asp:Literal ID="litDashboardLink" runat="server"></asp:Literal></li>
+            <%--<li><a href="<%= PRIFACT.DCCouncil.NPS.Core.NPSCommon.NPSUrls.Dashboard %>">Dashboard</a></li>--%>
             <li>
                 <a href="javascript:;">NPS Categories</a>
                 <ul>
