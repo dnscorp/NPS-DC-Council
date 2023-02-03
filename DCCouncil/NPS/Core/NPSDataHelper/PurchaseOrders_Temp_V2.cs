@@ -33,7 +33,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
         public bool? IsTrainingExpense { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
-              
+        public long OfficeId { get; set; }
+        public string OfficeName { get; set; }
+
 
         private static string GetDbConnectionString()
         {
@@ -97,7 +99,9 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper
             objSummary.IsTrainingExpense= BasicConverter.DbToBoolValue(reader["IsTrainingExpense"]);
             objSummary.CreatedDate= BasicConverter.DbToDateValue(reader["CreatedDate"]);
             objSummary.UpdatedDate= BasicConverter.DbToDateValue(reader["UpdatedDate"]);
-                        
+            objSummary.OfficeName = BasicConverter.DbToStringValue(reader["OfficeName"]);
+            objSummary.OfficeId = BasicConverter.DbToLongValue(reader["OfficeId"]);
+
             return objSummary;
         }                
     }

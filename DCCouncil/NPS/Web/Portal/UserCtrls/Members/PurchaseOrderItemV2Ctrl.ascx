@@ -71,15 +71,17 @@
             </td>
         </tr>
         <tr>
-            <th>Description</th>
+            <th style="vertical-align:top">Description</th>
             <td>
-                <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
+                <asp:TextBox Width="100%" ID="txtDescription" runat="server"></asp:TextBox><br />
+                <span style="font-size:12px;">Note: Updating this PO description will update the PO description for all the line items (if present) for this PO Number</span>
             </td>
         </tr>
          <tr>
-            <th>Associate a different Office</th>
+            <th style="vertical-align:top">Associate a different Office</th>
             <td>
-                <asp:DropDownList ID="ddlAlternateOffice" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlAlternateOffice" runat="server"></asp:DropDownList><br />
+                <span style="font-size:12px;">Note: Selecting a different office from this dropdown will update the office association for all the line items (if present) for this PO Number</span>
             </td>
         </tr>
         <tr>

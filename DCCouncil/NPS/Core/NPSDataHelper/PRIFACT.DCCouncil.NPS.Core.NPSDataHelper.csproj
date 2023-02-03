@@ -80,6 +80,7 @@
     <Compile Include="ViewModels\PurchaseOrderExpendedViewModel.cs" />
     <Compile Include="ViewModels\PurchaseOrderItemV2ViewModel.cs" />
     <Compile Include="ViewModels\PurchaseOrderObligatedViewModel.cs" />
+    <Compile Include="ViewModels\PurchaseOrdersV2ResultsViewModel.cs" />
     <Compile Include="ViewModels\PurchaseOrdersV2ViewModel.cs" />
     <Compile Include="ViewModels\PurchaseOrderTransactionsViewModel.cs" />
   </ItemGroup>

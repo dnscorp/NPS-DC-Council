@@ -35,15 +35,16 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.ViewModels
         public DateTime UpdatedDate { get; set; }
         public long OfficeId { get; set; }
         public string OfficeName { get; set; }
+        public string ExpenditureSubCategoryName { get; set; }
 
 
         private static string GetDbConnectionString()
         {
             return AppSettings.DbConnectionString;
         }
-        public static List<PurchaseOrdersV2ViewModel> GetAll(long fiscalYearId)
+        public static PurchaseOrdersV2ResultsViewModel GetAll(long fiscalYearId, string strSearchText, long? officeId, int? iPageSize, int? iPageNumber, NPSCommon.Enums.SortFields.PurchaseOrderV2SortField sortField, NPSCommon.Enums.OrderByDirection orderByDirection)
         {
-            return new SafeDBExecute<List<PurchaseOrdersV2ViewModel>>(delegate (DBContext dbContext)
+            return new SafeDBExecute<PurchaseOrdersV2ResultsViewModel>(delegate (DBContext dbContext)
             {
                 SqlDataReader reader = null;
                 SqlParameter param = null;
@@ -54,7 +55,26 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.ViewModels
                 param = cmd.Parameters.Add("@FiscalYearId", SqlDbType.BigInt);
                 param.Value = BasicConverter.LongToDbValue(fiscalYearId);
 
+                param = cmd.Parameters.Add("@SearchText", SqlDbType.NVarChar);
+                param.Value = BasicConverter.StringToDbValue(strSearchText);
+
+                param = cmd.Parameters.Add("@OfficeId", SqlDbType.BigInt);
+                param.Value = BasicConverter.NullableLongToDbValue(officeId);
+
+                param = cmd.Parameters.Add("@PageSize", SqlDbType.Int);
+                param.Value = BasicConverter.NullableIntToDbValue(iPageSize);
+
+                param = cmd.Parameters.Add("@PageNumber", SqlDbType.Int);
+                param.Value = BasicConverter.NullableIntToDbValue(iPageNumber);
+
+                param = cmd.Parameters.Add("@SortField", SqlDbType.Int);
+                param.Value = BasicConverter.NullableIntToDbValue(Convert.ToInt32(sortField));
+
+                param = cmd.Parameters.Add("@SortDirection", SqlDbType.Int);
+                param.Value = BasicConverter.NullableIntToDbValue(Convert.ToInt32(orderByDirection));
+
                 var lstPurchaseOrderImportSummaries = new List<PurchaseOrdersV2ViewModel>();
+                var objResultInfo = new PurchaseOrdersV2ResultsViewModel();
                 try
                 {
                     reader = cmd.ExecuteReader();
@@ -64,6 +84,12 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.ViewModels
                         PurchaseOrdersV2ViewModel objHelper = _Bind(reader); ;
                         lstPurchaseOrderImportSummaries.Add(objHelper);
                     }
+                    objResultInfo.Items = lstPurchaseOrderImportSummaries;
+                    reader.NextResult();
+                    if (reader.Read())
+                    {
+                        objResultInfo.RowCount = BasicConverter.DbToIntValue(reader["TotalRowCount"]);
+                    }
                 }
                 finally
                 {
@@ -72,7 +98,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.ViewModels
                         DBContext.CloseReader(reader);
                     }
                 }
-                return lstPurchaseOrderImportSummaries;
+                return objResultInfo;
 
             }).DoExecute(GetDbConnectionString());
         }               
@@ -104,6 +130,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSDataHelper.ViewModels
 
             objSummary.OfficeId = BasicConverter.DbToLongValue(reader["OfficeId"]);
             objSummary.OfficeName = BasicConverter.DbToStringValue(reader["OfficeName"]);
+            objSummary.ExpenditureSubCategoryName = BasicConverter.DbToStringValue(reader["ExpenditureSubCategoryName"]);
 
             return objSummary;
         }

@@ -52,6 +52,7 @@
     <Compile Include="Enums\SortFields\ExpenditureSummarySortField.cs" />
     <Compile Include="Enums\SortFields\FiscalYearSortFields.cs" />
     <Compile Include="Enums\SortFields\OfficeSortFields.cs" />
+    <Compile Include="Enums\SortFields\PurchaseOrderV2SortField.cs" />
     <Compile Include="Enums\SortFields\PurchaseOrderSortField.cs" />
     <Compile Include="Enums\SortFields\StaffSortFields.cs" />
     <Compile Include="Enums\SortFields\UserSortFields.cs" />

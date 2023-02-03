@@ -21,11 +21,11 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
     {
         #region Private Properties
         //Properties for sorting in the repeater
-        private PurchaseOrderSortField SortField
+        private PurchaseOrderV2SortField SortField
         {
             get
             {
-                return EnumHelper.ParseEnum<PurchaseOrderSortField>(hfSortField.Value);
+                return EnumHelper.ParseEnum<PurchaseOrderV2SortField>(hfSortField.Value);
             }
             set
             {
@@ -155,6 +155,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
                 Literal litExpendedAmount = e.Item.FindControl("litExpendedAmount") as Literal;
                 Literal litAccountingDate = e.Item.FindControl("litAccountingDate") as Literal;
                 Literal litPOBalance = e.Item.FindControl("litPOBalance") as Literal;
+                Literal litExpSubCategory = e.Item.FindControl("litExpSubCategory") as Literal;
 
                 var objSummary = e.Item.DataItem as PurchaseOrdersV2ViewModel;
                 litOfficeName.Text = objSummary.OfficeName;
@@ -165,6 +166,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
                 litExpendedAmount.Text = UIHelper.GetAmountInDefaultFormat(objSummary.ExpendedAmount);
                 litAccountingDate.Text = objSummary.AccountingDate.ToShortDateString();
                 litPOBalance.Text = UIHelper.GetAmountInDefaultFormat(objSummary.POBalance);
+                litExpSubCategory.Text = objSummary.ExpenditureSubCategoryName;
 
                 //Literal litDateOfTransaction = e.Item.FindControl("litDateOfTransaction") as Literal;
                 //Literal litVendorName = e.Item.FindControl("litVendorName") as Literal;
@@ -211,7 +213,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
         //Sorting done here
         protected void rptrResult_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            PurchaseOrderSortField selectedSortField = EnumHelper.ParseEnum<PurchaseOrderSortField>(e.CommandName);
+            PurchaseOrderV2SortField selectedSortField = EnumHelper.ParseEnum<PurchaseOrderV2SortField>(e.CommandName);
             if (selectedSortField == SortField)
             {
                 _SwitchOrderByDirection();
@@ -289,27 +291,27 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
         }
 
         //Bind the data to the repeater based on the page selected and sort order
-        private void _BindData(string strSearchText, int? iPageSize, int? iPageNumber, PurchaseOrderSortField sortField, OrderByDirection orderByDirection)
+        private void _BindData(string strSearchText, int? iPageSize, int? iPageNumber, PurchaseOrderV2SortField sortField, OrderByDirection orderByDirection)
         {
-            var objResultInfo = new List<PurchaseOrdersV2ViewModel>();
+            PurchaseOrdersV2ResultsViewModel objResultInfo = null;
 
             if (ddlOfficeFilter.SelectedValue != "0")
             {
-                objResultInfo = PurchaseOrdersV2ViewModel.GetAll(FiscalYearSelected.FiscalYearID);
+                objResultInfo = PurchaseOrdersV2ViewModel.GetAll(FiscalYearSelected.FiscalYearID, strSearchText, Convert.ToInt64(ddlOfficeFilter.SelectedValue), iPageSize, iPageNumber, sortField, orderByDirection);
             }
             else
-                objResultInfo = PurchaseOrdersV2ViewModel.GetAll(FiscalYearSelected.FiscalYearID);
+                objResultInfo = PurchaseOrdersV2ViewModel.GetAll(FiscalYearSelected.FiscalYearID, strSearchText,null, iPageSize, iPageNumber, sortField, orderByDirection);
 
             if (objResultInfo != null)
             {
-                if (objResultInfo.Count > 0)
+                if (objResultInfo.Items.Count > 0)
                 {
                     PagerCtrl1.Visible = true;
                     rptrResult.Visible = true;
                     litNoResults.Visible = false;
 
                     //Initilizing the pager control
-                    PagerCtrl1.SetPager(objResultInfo.Count);
+                    PagerCtrl1.SetPager(objResultInfo.RowCount);
                 }
                 else
                 {
@@ -318,7 +320,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members
                     litNoResults.Text = "No results found.";
                 }
                 //Binding the data
-                rptrResult.DataSource = objResultInfo;
+                rptrResult.DataSource = objResultInfo.Items;
                 rptrResult.DataBind();
             }
         }

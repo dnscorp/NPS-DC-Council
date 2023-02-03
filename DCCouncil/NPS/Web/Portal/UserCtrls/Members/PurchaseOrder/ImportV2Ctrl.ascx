@@ -18,7 +18,7 @@
             </div>
 
             <div class="wizard-item">
-                <h3>Upload the Purchase Order report file to import:</h3>
+                <h3>Upload the Purchase Order report file to import:</h3>                
                 <asp:FileUpload ID="fuImportFile" runat="server" />
             </div>
         </asp:WizardStep>
@@ -141,5 +141,7 @@
         </asp:WizardStep>
     </WizardSteps>
 </asp:Wizard>
-
+<div>
+    <strong>Note:</strong> Per requirement, "Pay As You Go" Purchase Orders are ignored from the import file. They are identified using the Fund code in the PO file. If the fund code for a PO starts with "3030...", it will not be imported.
+</div>
 

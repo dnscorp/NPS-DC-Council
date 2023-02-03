@@ -229,7 +229,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members.PurchaseOrder
                 HiddenField hfPurchaseOrdersV2Id = e.Item.FindControl("hfPurchaseOrdersV2Id") as HiddenField;
 
                 PurchaseOrders_Temp_V2 objSummary = e.Item.DataItem as PurchaseOrders_Temp_V2;
-                litOfficeName.Text = objSummary.VendorName;
+                litOfficeName.Text = objSummary.OfficeName;
                 litPONumber.Text = objSummary.PONumber;
                 litVendorName.Text = objSummary.VendorName;
                 litPOLineNumber.Text = objSummary.POLineNumber.ToString();
@@ -276,7 +276,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members.PurchaseOrder
                 HiddenField hfPurchaseOrdersV2Id = e.Item.FindControl("hfPurchaseOrdersV2Id") as HiddenField;
 
                 PurchaseOrders_V2 objSummary = e.Item.DataItem as PurchaseOrders_V2;
-                litOfficeName.Text = objSummary.VendorName;
+                litOfficeName.Text = objSummary.OfficeName;
                 litPONumber.Text = objSummary.PONumber;
                 litVendorName.Text = objSummary.VendorName;
                 litPOLineNumber.Text = objSummary.POLineNumber.ToString();

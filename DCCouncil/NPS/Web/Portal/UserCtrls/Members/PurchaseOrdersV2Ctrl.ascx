@@ -35,7 +35,7 @@
                         <asp:Literal ID="litCreateLink" runat="server"></asp:Literal></a>
                 </div>
                 <asp:Button ID="bttn" Style="display: none" Text="Submit" OnClick="txtSearch_TextChanged" runat="server" />
-                <asp:HiddenField ID="hfSortField" runat="server" Value="DateOfTransaction" />
+                <asp:HiddenField ID="hfSortField" runat="server" Value="AccountingDate" />
                 <asp:HiddenField ID="hfOrderByDirection" runat="server" Value="Descending" />
                 <asp:Repeater ID="rptrResult" runat="server" OnItemDataBound="rptrResult_ItemDataBound" OnItemCommand="rptrResult_ItemCommand">
                     <HeaderTemplate>
@@ -68,10 +68,7 @@
                                 
                                 <th>
                                     <asp:LinkButton ID="lBtnPOBalance" runat="server" CommandName="POBalance" Text="PO Balance"></asp:LinkButton>
-                                </th>                                
-                                <th>
-                                    <asp:LinkButton ID="lBtnYear" runat="server" CommandName="Year" Text="Year"></asp:LinkButton>
-                                </th>
+                                </th>                                                                
                                 <th>
                                     <asp:LinkButton ID="lBtnExpSubCategory" runat="server" CommandName="ExpSubCategory" Text="Exp. Sub-Category"></asp:LinkButton>
                                 </th>
@@ -104,11 +101,7 @@
                             </td>
                             <td>
                                 <asp:Literal ID="litPOBalance" runat="server"></asp:Literal>
-                            </td>                            
-                            
-                            <td>
-                                <asp:Literal ID="litYear" runat="server"></asp:Literal>
-                            </td>
+                            </td>                                                        
                             <td>
                                 <asp:Literal ID="litExpSubCategory" runat="server"></asp:Literal>
                             </td>

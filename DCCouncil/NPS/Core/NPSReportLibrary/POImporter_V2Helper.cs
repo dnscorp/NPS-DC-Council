@@ -60,10 +60,12 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
                 using (OleDbConnection conn = new OleDbConnection(connectionString))
                 {
                     conn.Open();
-                    OleDbDataAdapter objDA = new System.Data.OleDb.OleDbDataAdapter
-                    ("select * from [" + sheetName + "]", conn);
+                    string query = String.Format("select * from [{0}{1}]", sheetName,"A5:Z");
+                    OleDbDataAdapter objDA = new System.Data.OleDb.OleDbDataAdapter(query, conn);
 
-                    objDA.Fill(dt_ExcelSheetData);
+                    //objDA.FillSchema(dt_ExcelSheetData, SchemaType.Source);
+                    //dt_ExcelSheetData.Columns[1].DataType = typeof(string);
+                    objDA.Fill(dt_ExcelSheetData);                    
 
                     //Removing Unwanted Rows
                     //we look up to 100 rows
@@ -81,7 +83,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
                     {
                         dt_ExcelSheetData.Columns.RemoveAt(i);
                     }
-
+                                                           
                     //Committing the changes
                     dt_ExcelSheetData.AcceptChanges();
 

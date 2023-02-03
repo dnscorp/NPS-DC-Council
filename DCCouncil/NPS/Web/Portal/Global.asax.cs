@@ -56,7 +56,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal
             }
         }
         void FriendlyErrorTransfer(string emlahId, string url)
-        {
+        {            
             Response.Redirect(String.Format("{0}?id={1}", NPSUrls.Error, Server.UrlEncode(emlahId)));
 
         }
