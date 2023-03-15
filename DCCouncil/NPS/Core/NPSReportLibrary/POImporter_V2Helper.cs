@@ -19,8 +19,8 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
             try
             {
                 DataTable dt_POAgingBalance, dt_POCloseoutBalance;
-                dt_POAgingBalance = getDataFromExcelSheet(excelFileNameWithFullPath, AgingBalanceSheetName, firstRowFirstColumnHeaderName, 21);
-                dt_POCloseoutBalance = getDataFromExcelSheet(excelFileNameWithFullPath, CloseOutBalanceSheetName, firstRowFirstColumnHeaderName, 8);
+                dt_POAgingBalance = getDataFromExcelSheet(excelFileNameWithFullPath, AgingBalanceSheetName, firstRowFirstColumnHeaderName, 28);
+                dt_POCloseoutBalance = getDataFromExcelSheet(excelFileNameWithFullPath, CloseOutBalanceSheetName, firstRowFirstColumnHeaderName, 12);
 
                 con = new SqlConnection(SQLConnectionString);
                 con.Open();
@@ -60,7 +60,7 @@ namespace PRIFACT.DCCouncil.NPS.Core.NPSReportLibrary
                 using (OleDbConnection conn = new OleDbConnection(connectionString))
                 {
                     conn.Open();
-                    string query = String.Format("select * from [{0}{1}]", sheetName,"A5:Z");
+                    string query = String.Format("select * from [{0}{1}]", sheetName,"A5:AB");
                     OleDbDataAdapter objDA = new System.Data.OleDb.OleDbDataAdapter(query, conn);
 
                     //objDA.FillSchema(dt_ExcelSheetData, SchemaType.Source);

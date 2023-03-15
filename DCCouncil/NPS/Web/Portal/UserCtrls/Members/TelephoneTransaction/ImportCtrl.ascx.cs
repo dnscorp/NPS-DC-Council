@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
 using System.Xml.Linq;
+using Microsoft.VisualBasic.FileIO;
 using PRIFACT.DCCouncil.NPS.Core.NPSCommon;
 using PRIFACT.DCCouncil.NPS.Core.NPSCommon.Enums;
 using PRIFACT.DCCouncil.NPS.Core.NPSDataHelper;
@@ -114,33 +115,47 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members.TelephoneTransactio
             {
                 foreach (string line in source)
                 {
-                    string[] parts = line.Split(',');
-                    if (parts.Length == 9)
+                    var parser = new TextFieldParser(new StringReader(line));
+                    parser.HasFieldsEnclosedInQuotes = true;
+                    parser.SetDelimiters(",");
+                    string[] parts = parser.ReadFields();
+
+                    //string[] parts = line.Split(new string[] { "\",\"" }, StringSplitOptions.None);
+                    if (parts.Length == 18)
                     {
-                        if (parts[0].ToString().ToLower() == "foundation account" || parts[1].ToString().ToLower() == "billing account" || string.IsNullOrEmpty(parts[4].ToString()))
+                        //parts[0] = parts[0].Remove(0, 1);
+                        if (parts[0].ToString().ToLower() == "foundation account" || parts[1].ToString().ToLower() == "account number" || string.IsNullOrEmpty(parts[5].ToString()))
                             continue;
                         else
                         {
+                            if (parts[8].Contains("("))
+                                parts[8] = parts[8].Replace("(", "-").Replace(")", "");
+
+                            if (parts[8].Contains("$"))
+                                parts[8] = parts[8].Replace("$", "");
+
                             var culture = System.Globalization.CultureInfo.CurrentCulture;
                             Int64 result;
 
                             // DateTime dtDate = new DateTime(Convert.ToInt32(parts[4].Substring(4)), Convert.ToInt32(parts[4].Substring(2, 2)), Convert.ToInt32(parts[4].Substring(0, 2)));
                             //string strDate = parts[4].Substring(2, 2) + "/" + parts[4].Substring(0, 2) + "/" + parts[4].Substring(4);
 
-
-
                             //New Format YYYYMMDD - Added by Vivek on Sep 16, 2014
-                            string strDate = parts[4].Substring(4, 2) + "/" + parts[4].Substring(6, 2) + "/" + parts[4].Substring(0, 4);
+                            string strDate = parts[5]; //parts[5].Substring(4, 2) + "/" + parts[5].Substring(6, 2) + "/" + parts[5].Substring(0, 4);
+
+                            var marketCycleEndDate = new DateTime();
+                            if (DateTime.TryParse(strDate, out marketCycleEndDate))
+                                strDate = marketCycleEndDate.ToString("MM/dd/yyyy");
 
                             TelephoneTransactionSheetImportHelper objTelephoneTransactionHelper = new TelephoneTransactionSheetImportHelper();
                             objTelephoneTransactionHelper.FoundationAccount = parts[0];
                             objTelephoneTransactionHelper.BillingAccount = parts[1];
                             objTelephoneTransactionHelper.WirelessNumber = parts[2];
-                            objTelephoneTransactionHelper.Username = parts[3];
+                            objTelephoneTransactionHelper.Username = parts[7];
 
-                            objTelephoneTransactionHelper.TotalUsage = parts[5];
-                            objTelephoneTransactionHelper.NumberOfEvents = parts[6];
-                            objTelephoneTransactionHelper.MOUUsage = parts[7];
+                            objTelephoneTransactionHelper.TotalUsage = parts[13];
+                            objTelephoneTransactionHelper.NumberOfEvents = "";
+                            objTelephoneTransactionHelper.MOUUsage = "";
 
                             string strFormat = AppSettings.TelephoneChargesImportDateFormat;
                             DateTime dateTime = new DateTime();
@@ -161,14 +176,14 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members.TelephoneTransactio
                                     {
                                         objTelephoneTransactionHelper.ImportStatusBeforeImport = TelephoneChargesStatusBeforeImport.InvalidWirelessNumber;
                                         objTelephoneTransactionHelper.WirelessNumber = parts[2];
-                                        objTelephoneTransactionHelper.MarketCycleEndDateFieldValue = parts[4];
+                                        objTelephoneTransactionHelper.MarketCycleEndDateFieldValue = parts[5];
                                         objTelephoneTransactionHelper.TotalCurrentChargesFieldValue = parts[8];
                                     }
 
                                 }
                                 else
                                 {
-                                    objTelephoneTransactionHelper.MarketCycleEndDateFieldValue = parts[8];
+                                    objTelephoneTransactionHelper.MarketCycleEndDateFieldValue = parts[5];
                                     objTelephoneTransactionHelper.WirelessNumber = parts[2];
                                     objTelephoneTransactionHelper.ImportStatusBeforeImport = TelephoneChargesStatusBeforeImport.InvalidTotalCurrentCharges;
                                 }
@@ -177,7 +192,7 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members.TelephoneTransactio
                             }
                             else
                             {
-                                objTelephoneTransactionHelper.MarketCycleEndDateFieldValue = parts[4];
+                                objTelephoneTransactionHelper.MarketCycleEndDateFieldValue = parts[5];
                                 objTelephoneTransactionHelper.TotalCurrentChargesFieldValue = parts[8];
                                 objTelephoneTransactionHelper.WirelessNumber = parts[2];
                                 objTelephoneTransactionHelper.ImportStatusBeforeImport = TelephoneChargesStatusBeforeImport.InvalidTransactionDate;
