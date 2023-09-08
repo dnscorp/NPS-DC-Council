@@ -1,0 +1,54 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Wide.Master.cs" Inherits="PRIFACT.DCCouncil.NPS.Web.Portal.SiteWideMaster" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<%@ Register Src="~/UserCtrls/Common/HeaderCtrl.ascx" TagName="HeaderCtrl" TagPrefix="uc1" %>
+<%@ Register Src="~/UserCtrls/Common/FooterCtrl.ascx" TagName="FooterCtrl" TagPrefix="uc2" %>
+<%@ Register Src="~/UserCtrls/Common/MenuCtrl.ascx" TagName="MenuCtrl" TagPrefix="uc3" %>
+<%@ Register Src="~/UserCtrls/Common/BreadCrumbCtrl.ascx" TagName="BreadCrumbCtrl" TagPrefix="uc4" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <script src="/Scripts/jquery-2.0.3.js"></script>
+    <asp:PlaceHolder ID="phTitle" runat="server">
+        <title><%: Page.Title %> - DC Council NPS</title>
+        <link rel="stylesheet" href="/Content/Site.css" />
+        <link rel="stylesheet" href="/Content/custom.css" />
+    </asp:PlaceHolder>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <%--<script src="/Scripts/Utility.js"></script>--%>
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <style>
+        .wide{
+            width: 98%; /* Set the desired width for the container */
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <form id="form1" runat="server">
+            <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
+                <Scripts>
+                    <asp:ScriptReference Path="~/Scripts/Utility.js" />
+                </Scripts>
+            </asp:ToolkitScriptManager>
+
+            <uc1:HeaderCtrl ID="HeaderCtrl1" runat="server" />
+
+            <uc3:MenuCtrl ID="MenuCtrl1" runat="server" />
+
+            <uc4:BreadCrumbCtrl ID="BreadCrumbCtrl1" runat="server" />
+            <div class="content">
+                <div class="inner wide">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <uc2:FooterCtrl ID="FooterCtrl1" runat="server" />
+        </form>
+    </div>
+    <div class="bodydimmer"></div>
+</body>
+</html>

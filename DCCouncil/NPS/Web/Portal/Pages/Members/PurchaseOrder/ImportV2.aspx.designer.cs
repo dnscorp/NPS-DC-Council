@@ -21,6 +21,6 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.Pages.Members.PurchaseOrder
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members.PurchaseOrder.ImportCtrlV2 ImportCtrl1;
+        protected global::PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members.PurchaseOrder.ImportV2Ctrl ImportCtrl1;
     }
 }
