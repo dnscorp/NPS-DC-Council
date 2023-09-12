@@ -203,12 +203,8 @@
     <Content Include="Pages\Error.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\Members\Expenditures.aspx" />
-    <Content Include="Pages\Members\PurchaseOrdersImportV2.aspx" />
-    <Content Include="Pages\Members\PurchaseOrdersMappingV2.aspx" />
-    <Content Include="Pages\Members\PurchaseOrdersPreviewV2.aspx" />
     <Content Include="Pages\Members\PurchaseOrdersV2.aspx" />
     <Content Include="Pages\Members\PurchaseOrders.aspx" />
-    <Content Include="Pages\Members\PurchaseOrder\ImportPreviewV2.aspx" />
     <Content Include="Pages\Members\PurchaseOrder\ImportV2.aspx" />
     <Content Include="Pages\Members\PurchaseOrder\Import.aspx" />
     <Content Include="Pages\Members\RecurringTransactions.aspx" />
@@ -356,27 +352,6 @@
     <Compile Include="Pages\Members\Expenditures.aspx.designer.cs">
       <DependentUpon>Expenditures.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Members\PurchaseOrdersImportV2.aspx.cs">
-      <DependentUpon>PurchaseOrdersImportV2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Members\PurchaseOrdersImportV2.aspx.designer.cs">
-      <DependentUpon>PurchaseOrdersImportV2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Members\PurchaseOrdersMappingV2.aspx.cs">
-      <DependentUpon>PurchaseOrdersMappingV2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Members\PurchaseOrdersMappingV2.aspx.designer.cs">
-      <DependentUpon>PurchaseOrdersMappingV2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Members\PurchaseOrdersPreviewV2.aspx.cs">
-      <DependentUpon>PurchaseOrdersPreviewV2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Members\PurchaseOrdersPreviewV2.aspx.designer.cs">
-      <DependentUpon>PurchaseOrdersPreviewV2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Members\PurchaseOrdersV2.aspx.cs">
       <DependentUpon>PurchaseOrdersV2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -390,13 +365,6 @@
     </Compile>
     <Compile Include="Pages\Members\PurchaseOrders.aspx.designer.cs">
       <DependentUpon>PurchaseOrders.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Members\PurchaseOrder\ImportPreviewV2.aspx.cs">
-      <DependentUpon>ImportPreviewV2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Members\PurchaseOrder\ImportPreviewV2.aspx.designer.cs">
-      <DependentUpon>ImportPreviewV2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Members\PurchaseOrder\ImportV2.aspx.cs">
       <DependentUpon>ImportV2.aspx</DependentUpon>
