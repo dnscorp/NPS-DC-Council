@@ -152,7 +152,8 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members.PurchaseOrder
 
             foreach (var columnName in columnNames)
             {
-                createTableQuery += "[" + columnName + "] NVARCHAR(MAX), "; // Assuming all columns are NVARCHAR(MAX)
+                if(!string.IsNullOrEmpty(columnName))
+                    createTableQuery += "[" + columnName + "] NVARCHAR(MAX), "; // Assuming all columns are NVARCHAR(MAX)
             }
             createTableQuery = createTableQuery.TrimEnd(',', ' ') + ")";
 
