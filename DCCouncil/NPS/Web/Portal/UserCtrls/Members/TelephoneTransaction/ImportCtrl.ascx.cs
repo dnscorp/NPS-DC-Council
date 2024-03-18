@@ -201,6 +201,86 @@ namespace PRIFACT.DCCouncil.NPS.Web.Portal.UserCtrls.Members.TelephoneTransactio
 
                         }
                     }
+                    else if (parts.Length == 21)
+                    {
+                        //parts[0] = parts[0].Remove(0, 1);
+                        if (parts[0].ToString().ToLower() == "foundation account" || parts[1].ToString().ToLower() == "account number" || string.IsNullOrEmpty(parts[5].ToString()))
+                            continue;
+                        else
+                        {
+                            if (parts[11].Contains("("))
+                                parts[11] = parts[11].Replace("(", "-").Replace(")", "");
+
+                            if (parts[11].Contains("$"))
+                                parts[11] = parts[11].Replace("$", "");
+
+                            var culture = System.Globalization.CultureInfo.CurrentCulture;
+                            Int64 result;
+
+                            // DateTime dtDate = new DateTime(Convert.ToInt32(parts[4].Substring(4)), Convert.ToInt32(parts[4].Substring(2, 2)), Convert.ToInt32(parts[4].Substring(0, 2)));
+                            //string strDate = parts[4].Substring(2, 2) + "/" + parts[4].Substring(0, 2) + "/" + parts[4].Substring(4);
+
+                            //New Format YYYYMMDD - Added by Vivek on Sep 16, 2014
+                            string strDate = parts[5]; //parts[5].Substring(4, 2) + "/" + parts[5].Substring(6, 2) + "/" + parts[5].Substring(0, 4);
+
+                            var marketCycleEndDate = new DateTime();
+                            if (DateTime.TryParse(strDate, out marketCycleEndDate))
+                                strDate = marketCycleEndDate.ToString("MM/dd/yyyy");
+
+                            TelephoneTransactionSheetImportHelper objTelephoneTransactionHelper = new TelephoneTransactionSheetImportHelper();
+                            objTelephoneTransactionHelper.FoundationAccount = parts[0];
+                            objTelephoneTransactionHelper.BillingAccount = parts[1];
+                            objTelephoneTransactionHelper.WirelessNumber = parts[2];
+                            objTelephoneTransactionHelper.Username = parts[7];
+
+                            objTelephoneTransactionHelper.TotalUsage = parts[16];
+                            objTelephoneTransactionHelper.NumberOfEvents = "";
+                            objTelephoneTransactionHelper.MOUUsage = "";
+
+                            string strFormat = AppSettings.TelephoneChargesImportDateFormat;
+                            DateTime dateTime = new DateTime();
+                            if (DateTime.TryParseExact(strDate, strFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime))
+                            {
+                                objTelephoneTransactionHelper.MarketCycleEndDate = Convert.ToDateTime(dateTime.ToString());
+
+                                Double number;
+                                if (Double.TryParse(parts[11], out number))
+                                {
+                                    objTelephoneTransactionHelper.TotalCurrentCharges = Convert.ToDouble(parts[11]);
+                                    if (Int64.TryParse(parts[2], out result))
+                                    {
+                                        objTelephoneTransactionHelper.ImportStatusBeforeImport = TelephoneChargesStatusBeforeImport.Valid;
+                                        objTelephoneTransactionHelper.WirelessNumber = parts[2];
+                                    }
+                                    else
+                                    {
+                                        objTelephoneTransactionHelper.ImportStatusBeforeImport = TelephoneChargesStatusBeforeImport.InvalidWirelessNumber;
+                                        objTelephoneTransactionHelper.WirelessNumber = parts[2];
+                                        objTelephoneTransactionHelper.MarketCycleEndDateFieldValue = parts[5];
+                                        objTelephoneTransactionHelper.TotalCurrentChargesFieldValue = parts[11];
+                                    }
+
+                                }
+                                else
+                                {
+                                    objTelephoneTransactionHelper.MarketCycleEndDateFieldValue = parts[5];
+                                    objTelephoneTransactionHelper.WirelessNumber = parts[2];
+                                    objTelephoneTransactionHelper.ImportStatusBeforeImport = TelephoneChargesStatusBeforeImport.InvalidTotalCurrentCharges;
+                                }
+                                lstPhoneTransactionSheetHelper.Add(objTelephoneTransactionHelper);
+
+                            }
+                            else
+                            {
+                                objTelephoneTransactionHelper.MarketCycleEndDateFieldValue = parts[5];
+                                objTelephoneTransactionHelper.TotalCurrentChargesFieldValue = parts[11];
+                                objTelephoneTransactionHelper.WirelessNumber = parts[2];
+                                objTelephoneTransactionHelper.ImportStatusBeforeImport = TelephoneChargesStatusBeforeImport.InvalidTransactionDate;
+                                lstPhoneTransactionSheetHelper.Add(objTelephoneTransactionHelper);
+                            }
+
+                        }
+                    }
                 }
             }
             return lstPhoneTransactionSheetHelper;
